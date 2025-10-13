@@ -1,0 +1,10 @@
+{
+  "@@locale": "en",
+  "appTitle": "GarantieSafe",
+  "onboarding_welcome": "Keep all your warranties safe, private and under your control.",
+  "onboarding_get_started": "Get started",
+  "storage_choice_title": "Where should we store your data?",
+  "storage_choice_local": "Only on this device",
+  "storage_choice_cloud": "In your cloud (Google Drive)",
+  "scan_tip_full_receipt": "For warranty claims, scan the entire receipt – not just the product line."
+}

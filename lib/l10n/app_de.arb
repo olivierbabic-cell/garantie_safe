@@ -1,0 +1,10 @@
+{
+  "@@locale": "de",
+  "appTitle": "GarantieSafe",
+  "onboarding_welcome": "Behalte all deine Garantien im Blick – sicher, privat und unter deiner Kontrolle.",
+  "onboarding_get_started": "Los geht’s",
+  "storage_choice_title": "Wo sollen deine Daten gespeichert werden?",
+  "storage_choice_local": "Nur auf diesem Gerät",
+  "storage_choice_cloud": "In deiner Cloud (Google Drive)",
+  "scan_tip_full_receipt": "Für Garantiefälle bitte den gesamten Kassenzettel scannen – nicht nur die Produktzeile."
+}
