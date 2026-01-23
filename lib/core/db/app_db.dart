@@ -9,7 +9,7 @@ class AppDb {
   static final AppDb instance = AppDb._();
 
   static const _dbName = 'garantie_safe.db';
-  static const _dbVersion = 2;
+  static const _dbVersion = 3;
 
   Database? _db;
 
@@ -32,6 +32,9 @@ class AppDb {
       onUpgrade: (db, oldV, newV) async {
         if (oldV < 2) {
           await _upgradeToV2(db);
+        }
+        if (oldV < 3) {
+          await _upgradeToV3(db);
         }
       },
     );
@@ -56,6 +59,7 @@ class AppDb {
         category_code TEXT,
         purchase_date INTEGER NOT NULL,
         expiry_date INTEGER,
+        warranty_years INTEGER,
         payment_method_code TEXT,
         notes TEXT,
         created_at INTEGER NOT NULL,
@@ -148,6 +152,15 @@ class AppDb {
 
       // Wir lassen die alte Spalte in SQLite drin (DROP COLUMN ist je nach SQLite-Version tricky).
       // Unser Code nutzt sie ab V2 nicht mehr -> stabil.
+    }
+  }
+
+  Future<void> _upgradeToV3(Database db) async {
+    // Add warranty_years column if it doesn't exist
+    final hasWarrantyYears =
+        await _columnExists(db, table: 'items', column: 'warranty_years');
+    if (!hasWarrantyYears) {
+      await db.execute('ALTER TABLE items ADD COLUMN warranty_years INTEGER;');
     }
   }
 

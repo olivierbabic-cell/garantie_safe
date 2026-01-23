@@ -40,6 +40,8 @@ class _ItemEditScreenState extends ConsumerState<ItemEditScreen> {
 
   DateTime _purchaseDate = DateUtils.dateOnly(DateTime.now());
   DateTime? _expiryDate;
+  int? _warrantyYears; // 2, 3, 5, or null
+  bool _hasCustomExpiry = false; // Track if user manually set expiry
 
   bool _saving = false;
   bool _initialized = false;
@@ -86,11 +88,20 @@ class _ItemEditScreenState extends ConsumerState<ItemEditScreen> {
       DateTime.fromMillisecondsSinceEpoch(pMs),
     );
 
+    _warrantyYears = existing.warrantyYears;
+
     final eMs = existing.expiryDate;
     if (eMs != null) {
       _expiryDate = DateUtils.dateOnly(
         DateTime.fromMillisecondsSinceEpoch(eMs),
       );
+      // Check if expiry was manually set (not matching calculated)
+      if (_warrantyYears != null) {
+        final calculated = _calculateExpiry(_purchaseDate, _warrantyYears!);
+        _hasCustomExpiry = calculated != _expiryDate;
+      } else {
+        _hasCustomExpiry = true;
+      }
     }
 
     // Load attachments
@@ -129,6 +140,7 @@ class _ItemEditScreenState extends ConsumerState<ItemEditScreen> {
               merchant: merchant,
               purchaseDate: purchaseMs,
               expiryDate: expiryMs,
+              warrantyYears: _warrantyYears,
               categoryCode: null,
               paymentMethodCode: null,
               notes: notes,
@@ -140,6 +152,7 @@ class _ItemEditScreenState extends ConsumerState<ItemEditScreen> {
               merchant: merchant,
               purchaseDate: purchaseMs,
               expiryDate: expiryMs,
+              warrantyYears: _warrantyYears,
               notes: notes,
               updatedAt: nowMs,
             );
@@ -384,9 +397,14 @@ class _ItemEditScreenState extends ConsumerState<ItemEditScreen> {
     if (picked != null && mounted) {
       setState(() {
         _purchaseDate = DateUtils.dateOnly(picked);
-        // Optional: wenn expiry vor purchase liegt -> reset
+        // Recalculate expiry if warranty years is set and no custom expiry
+        if (_warrantyYears != null && !_hasCustomExpiry) {
+          _expiryDate = _calculateExpiry(_purchaseDate, _warrantyYears!);
+        }
+        // Reset custom expiry if it's now before purchase
         if (_expiryDate != null && _expiryDate!.isBefore(_purchaseDate)) {
           _expiryDate = null;
+          _hasCustomExpiry = false;
         }
       });
     }
@@ -404,12 +422,38 @@ class _ItemEditScreenState extends ConsumerState<ItemEditScreen> {
       helpText: t.items_pick_expiry_date,
     );
     if (picked != null && mounted) {
-      setState(() => _expiryDate = DateUtils.dateOnly(picked));
+      setState(() {
+        _expiryDate = DateUtils.dateOnly(picked);
+        _hasCustomExpiry = true; // User manually set expiry
+      });
     }
   }
 
   void _clearExpiry() {
-    setState(() => _expiryDate = null);
+    setState(() {
+      _expiryDate = null;
+      _hasCustomExpiry = false;
+    });
+  }
+
+  void _setWarrantyYears(int? years) {
+    setState(() {
+      _warrantyYears = years;
+      // Auto-calculate expiry if not custom
+      if (years != null && !_hasCustomExpiry) {
+        _expiryDate = _calculateExpiry(_purchaseDate, years);
+      } else if (years == null && !_hasCustomExpiry) {
+        _expiryDate = null;
+      }
+    });
+  }
+
+  DateTime _calculateExpiry(DateTime purchaseDate, int years) {
+    return DateTime(
+      purchaseDate.year + years,
+      purchaseDate.month,
+      purchaseDate.day,
+    );
   }
 
   @override
@@ -457,11 +501,49 @@ class _ItemEditScreenState extends ConsumerState<ItemEditScreen> {
                     ),
                   ),
                   const SizedBox(height: 8),
+
+                  // Warranty duration selector
+                  ListTile(
+                    contentPadding: EdgeInsets.zero,
+                    title: Text(t.warranty_years ?? 'Warranty duration'),
+                    subtitle: Text(_warrantyYears == null
+                        ? t.not_set
+                        : '$_warrantyYears ${t.years_suffix ?? 'years'}'),
+                  ),
+                  Wrap(
+                    spacing: 8,
+                    children: [
+                      ChoiceChip(
+                        label: Text('2 ${t.years_suffix ?? 'years'}'),
+                        selected: _warrantyYears == 2,
+                        onSelected: (_) => _setWarrantyYears(2),
+                      ),
+                      ChoiceChip(
+                        label: Text('3 ${t.years_suffix ?? 'years'}'),
+                        selected: _warrantyYears == 3,
+                        onSelected: (_) => _setWarrantyYears(3),
+                      ),
+                      ChoiceChip(
+                        label: Text('5 ${t.years_suffix ?? 'years'}'),
+                        selected: _warrantyYears == 5,
+                        onSelected: (_) => _setWarrantyYears(5),
+                      ),
+                      if (_warrantyYears != null)
+                        ChoiceChip(
+                          label: Text(t.clear ?? 'Clear'),
+                          selected: false,
+                          onSelected: (_) => _setWarrantyYears(null),
+                        ),
+                    ],
+                  ),
+                  const SizedBox(height: 16),
+
                   ListTile(
                     contentPadding: EdgeInsets.zero,
                     title: Text(t.items_expiry),
-                    subtitle: Text(
-                        _expiryDate == null ? t.not_set : _fmt(_expiryDate!)),
+                    subtitle: Text(_expiryDate == null
+                        ? t.not_set
+                        : '${_fmt(_expiryDate!)}${_hasCustomExpiry ? ' (${t.custom_expiry ?? 'custom'})' : ''}'),
                     trailing: Row(
                       mainAxisSize: MainAxisSize.min,
                       children: [

@@ -15,6 +15,9 @@ class Item {
   final int purchaseDate;
   final int? expiryDate;
 
+  // Warranty duration in years (2, 3, 5, or custom)
+  final int? warrantyYears;
+
   // Codes
   final String? categoryCode;
   final String? paymentMethodCode;
@@ -33,6 +36,7 @@ class Item {
     this.merchant,
     required this.purchaseDate,
     this.expiryDate,
+    this.warrantyYears,
     this.categoryCode,
     this.paymentMethodCode,
     this.notes,
@@ -47,6 +51,7 @@ class Item {
     String? merchant,
     int? purchaseDate,
     int? expiryDate,
+    int? warrantyYears,
     String? categoryCode,
     String? paymentMethodCode,
     String? notes,
@@ -60,6 +65,7 @@ class Item {
       merchant: merchant ?? this.merchant,
       purchaseDate: purchaseDate ?? this.purchaseDate,
       expiryDate: expiryDate ?? this.expiryDate,
+      warrantyYears: warrantyYears ?? this.warrantyYears,
       categoryCode: categoryCode ?? this.categoryCode,
       paymentMethodCode: paymentMethodCode ?? this.paymentMethodCode,
       notes: notes ?? this.notes,
@@ -75,6 +81,7 @@ class Item {
         'category_code': categoryCode,
         'purchase_date': purchaseDate,
         'expiry_date': expiryDate,
+        'warranty_years': warrantyYears,
         'payment_method_code': paymentMethodCode,
         'notes': notes,
         'created_at': createdAt,
@@ -89,6 +96,7 @@ class Item {
       merchant: map['merchant'] as String?,
       purchaseDate: (map['purchase_date'] as int?) ?? 0,
       expiryDate: map['expiry_date'] as int?,
+      warrantyYears: map['warranty_years'] as int?,
       categoryCode: map['category_code'] as String?,
       paymentMethodCode: map['payment_method_code'] as String?,
       notes: map['notes'] as String?,
