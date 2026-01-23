@@ -1,5 +1,4 @@
 // lib/features/items/item_edit_screen.dart
-import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -44,8 +43,11 @@ class _ItemEditScreenState extends ConsumerState<ItemEditScreen> {
     final id = widget.itemId;
     if (id == null || id.trim().isEmpty) return null;
 
+    final idInt = int.tryParse(id);
+    if (idInt == null) return null;
+
     for (final it in items) {
-      if (it.id.toString() == id) return it;
+      if (it.id == idInt) return it;
     }
     return null;
   }
@@ -60,14 +62,12 @@ class _ItemEditScreenState extends ConsumerState<ItemEditScreen> {
     _merchantCtrl.text = existing.merchant ?? '';
     _notesCtrl.text = existing.notes ?? '';
 
-    final pMs = existing.purchaseDateMs;
-    if (pMs != null) {
-      _purchaseDate = DateUtils.dateOnly(
-        DateTime.fromMillisecondsSinceEpoch(pMs),
-      );
-    }
+    final pMs = existing.purchaseDate;
+    _purchaseDate = DateUtils.dateOnly(
+      DateTime.fromMillisecondsSinceEpoch(pMs),
+    );
 
-    final eMs = existing.expiryDateMs;
+    final eMs = existing.expiryDate;
     if (eMs != null) {
       _expiryDate = DateUtils.dateOnly(
         DateTime.fromMillisecondsSinceEpoch(eMs),
@@ -101,28 +101,25 @@ class _ItemEditScreenState extends ConsumerState<ItemEditScreen> {
 
       final item = (existing == null)
           ? Item(
-              id: _newId(),
+              id: 0, // AUTOINCREMENT will assign
               vaultId: 'personal',
               title: title,
               merchant: merchant,
-              purchaseDateMs: purchaseMs,
-              expiryDateMs: expiryMs,
-              warrantyYears: null,
+              purchaseDate: purchaseMs,
+              expiryDate: expiryMs,
               categoryCode: null,
               paymentMethodCode: null,
               notes: notes,
-              attachmentPath: null,
-              attachmentType: null,
-              createdAtMs: nowMs,
-              updatedAtMs: nowMs,
+              createdAt: nowMs,
+              updatedAt: nowMs,
             )
           : existing.copyWith(
               title: title,
               merchant: merchant,
-              purchaseDateMs: purchaseMs,
-              expiryDateMs: expiryMs,
+              purchaseDate: purchaseMs,
+              expiryDate: expiryMs,
               notes: notes,
-              updatedAtMs: nowMs,
+              updatedAt: nowMs,
             );
 
       await notifier.upsert(item);
@@ -271,13 +268,5 @@ class _ItemEditScreenState extends ConsumerState<ItemEditScreen> {
     final mm = d.month.toString().padLeft(2, '0');
     final yyyy = d.year.toString();
     return '$dd.$mm.$yyyy';
-  }
-
-  /// Simple ID without extra packages.
-  /// Format: <utcMillis>-<random6>
-  static String _newId() {
-    final ms = DateTime.now().toUtc().millisecondsSinceEpoch;
-    final r = Random().nextInt(900000) + 100000;
-    return '$ms-$r';
   }
 }

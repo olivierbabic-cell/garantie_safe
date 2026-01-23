@@ -64,37 +64,45 @@ class _ItemsListScreenState extends ConsumerState<ItemsListScreen> {
                 final filtered = _applyFilter(items);
 
                 return RefreshIndicator(
-                  onRefresh: () => ref.read(itemsListProvider.notifier).refresh(),
+                  onRefresh: () =>
+                      ref.read(itemsListProvider.notifier).refresh(),
                   child: filtered.isEmpty
                       ? _EmptyState(filterIndex: _filterIndex)
                       : ListView.separated(
                           physics: const AlwaysScrollableScrollPhysics(),
                           padding: const EdgeInsets.fromLTRB(16, 8, 16, 16),
                           itemCount: filtered.length,
-                          separatorBuilder: (_, __) => const SizedBox(height: 10),
+                          separatorBuilder: (_, __) =>
+                              const SizedBox(height: 10),
                           itemBuilder: (context, i) {
                             final item = filtered[i];
-                            final itemId = item.id.toString();
+                            final itemId = item.id;
 
                             return _ItemCard(
                               item: item,
                               statusText: _statusText(context, item),
                               onTap: () async {
-                                final changed = await Navigator.of(context).push<bool>(
+                                final changed =
+                                    await Navigator.of(context).push<bool>(
                                   MaterialPageRoute(
-                                    builder: (_) => ItemEditScreen(itemId: itemId),
+                                    builder: (_) => ItemEditScreen(
+                                        itemId: itemId.toString()),
                                   ),
                                 );
 
                                 if (changed == true && mounted) {
-                                  await ref.read(itemsListProvider.notifier).refresh();
+                                  await ref
+                                      .read(itemsListProvider.notifier)
+                                      .refresh();
                                 }
                               },
                               onDelete: () async {
                                 final ok = await _confirmDelete(context, t);
                                 if (ok != true) return;
 
-                                await ref.read(itemsListProvider.notifier).delete(itemId);
+                                await ref
+                                    .read(itemsListProvider.notifier)
+                                    .delete(itemId);
                               },
                             );
                           },
@@ -112,16 +120,18 @@ class _ItemsListScreenState extends ConsumerState<ItemsListScreen> {
     final today = DateUtils.dateOnly(DateTime.now());
 
     bool expired(Item i) {
-      final ms = i.expiryDateMs;
+      final ms = i.expiryDate;
       if (ms == null) return false;
-      final expiry = DateUtils.dateOnly(DateTime.fromMillisecondsSinceEpoch(ms));
+      final expiry =
+          DateUtils.dateOnly(DateTime.fromMillisecondsSinceEpoch(ms));
       return expiry.isBefore(today);
     }
 
     bool soon(Item i) {
-      final ms = i.expiryDateMs;
+      final ms = i.expiryDate;
       if (ms == null) return false;
-      final expiry = DateUtils.dateOnly(DateTime.fromMillisecondsSinceEpoch(ms));
+      final expiry =
+          DateUtils.dateOnly(DateTime.fromMillisecondsSinceEpoch(ms));
       final diffDays = expiry.difference(today).inDays;
       return diffDays >= 0 && diffDays <= 45;
     }
@@ -139,7 +149,7 @@ class _ItemsListScreenState extends ConsumerState<ItemsListScreen> {
   String? _statusText(BuildContext context, Item item) {
     final t = AppLocalizations.of(context)!;
 
-    final ms = item.expiryDateMs;
+    final ms = item.expiryDate;
     if (ms == null) return null;
 
     final today = DateUtils.dateOnly(DateTime.now());
@@ -237,7 +247,7 @@ class _ItemCard extends StatelessWidget {
     final merchant = (item.merchant ?? '').trim();
     if (merchant.isNotEmpty) subtitleParts.add(merchant);
 
-    final expiry = _formatExpiry(item.expiryDateMs);
+    final expiry = _formatExpiry(item.expiryDate);
     if (expiry != null) subtitleParts.add(expiry);
 
     final subtitle = subtitleParts.isEmpty ? null : subtitleParts.join(' • ');
@@ -273,7 +283,8 @@ class _ItemCard extends StatelessWidget {
                         overflow: TextOverflow.ellipsis,
                       ),
                     ],
-                    if (statusText != null && statusText!.trim().isNotEmpty) ...[
+                    if (statusText != null &&
+                        statusText!.trim().isNotEmpty) ...[
                       const SizedBox(height: 10),
                       _StatusPill(text: statusText!),
                     ],

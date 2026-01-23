@@ -1,14 +1,10 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'item.dart';
-import 'items_db.dart';
 import 'items_repository.dart';
 
-final itemsDbProvider = Provider<ItemsDb>((ref) => ItemsDb.instance);
-
 final itemsRepositoryProvider = Provider<ItemsRepository>((ref) {
-  final db = ref.watch(itemsDbProvider);
-  return ItemsRepository(db);
+  return ItemsRepository();
 });
 
 /// Wichtig: Provider-Name so, dass du ihn im Screen verwenden kannst.
@@ -22,15 +18,12 @@ final itemsListProvider =
 class ItemsController extends StateNotifier<AsyncValue<List<Item>>> {
   final ItemsRepository _repo;
 
-  String _vaultId = 'personal';
-
   ItemsController(this._repo) : super(const AsyncValue.loading());
 
-  Future<void> load({String vaultId = 'personal'}) async {
-    _vaultId = vaultId;
+  Future<void> load() async {
     state = const AsyncValue.loading();
     try {
-      final items = await _repo.listItems(vaultId: _vaultId);
+      final items = await _repo.listItems();
       state = AsyncValue.data(items);
     } catch (e, st) {
       state = AsyncValue.error(e, st);
@@ -39,7 +32,7 @@ class ItemsController extends StateNotifier<AsyncValue<List<Item>>> {
 
   Future<void> refresh() async {
     try {
-      final items = await _repo.listItems(vaultId: _vaultId);
+      final items = await _repo.listItems();
       state = AsyncValue.data(items);
     } catch (e, st) {
       state = AsyncValue.error(e, st);
@@ -51,7 +44,7 @@ class ItemsController extends StateNotifier<AsyncValue<List<Item>>> {
     await refresh();
   }
 
-  Future<void> delete(String id) async {
+  Future<void> delete(int id) async {
     await _repo.deleteById(id);
     await refresh();
   }

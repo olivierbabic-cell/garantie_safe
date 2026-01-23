@@ -157,7 +157,9 @@ class AppDb {
     if (p.endsWith('.jpg') ||
         p.endsWith('.jpeg') ||
         p.endsWith('.png') ||
-        p.endsWith('.webp')) return 'image';
+        p.endsWith('.webp')) {
+      return 'image';
+    }
     return 'other';
   }
 
