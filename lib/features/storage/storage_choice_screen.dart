@@ -1,10 +1,19 @@
 import 'package:flutter/material.dart';
-import 'package:garantie_safe/features/payments/payment_methods_screen.dart';
+import 'package:garantie_safe/l10n/app_localizations.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import '../payments/payment_methods_screen.dart';
 
 class StorageChoiceScreen extends StatelessWidget {
   const StorageChoiceScreen({super.key});
 
-  void _goNext(BuildContext context) {
+  Future<void> _saveChoice(String value) async {
+    final sp = await SharedPreferences.getInstance();
+    await sp.setString('onb_storage', value);
+  }
+
+  Future<void> _saveAndNext(BuildContext context, String value) async {
+    await _saveChoice(value);
+    if (!context.mounted) return; // ✅ Context erst NACH await nutzen
     Navigator.of(context).push(
       MaterialPageRoute(builder: (_) => const PaymentMethodsScreen()),
     );
@@ -12,46 +21,33 @@ class StorageChoiceScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final t = AppLocalizations.of(context)!;
+
     return Scaffold(
-      appBar: AppBar(title: const Text('Speicherort wählen')),
+      appBar: AppBar(title: Text(t.storage_title)),
       body: Padding(
         padding: const EdgeInsets.all(24),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            const Text(
-              'Wo sollen deine Daten gespeichert werden?',
-              style: TextStyle(fontSize: 18),
-            ),
+            Text(t.storage_question, style: const TextStyle(fontSize: 18)),
             const SizedBox(height: 24),
             ElevatedButton.icon(
               icon: const Icon(Icons.smartphone),
-              label: const Text('Nur auf diesem Gerät'),
-              onPressed: () {
-                ScaffoldMessenger.of(context).showSnackBar(
-                  const SnackBar(content: Text('Auswahl: Lokal (kommt später)')),
-                );
-                // TODO: Auswahl persistent speichern (später)
-                _goNext(context);
-              },
+              label: Text(t.storage_local),
+              onPressed: () => _saveAndNext(context, 'local'),
             ),
             const SizedBox(height: 12),
             ElevatedButton.icon(
               icon: const Icon(Icons.cloud),
-              label: const Text('In deiner Cloud (Google Drive)'),
-              onPressed: () {
-                ScaffoldMessenger.of(context).showSnackBar(
-                  const SnackBar(content: Text('Auswahl: Google Drive (kommt später)')),
-                );
-                // TODO: OAuth-Flow starten & Auswahl speichern (später)
-                _goNext(context);
-              },
+              label: Text(t.storage_cloud),
+              onPressed: () => _saveAndNext(context, 'gdrive'), // später OAuth
             ),
             const Spacer(),
-            const Text(
-              'Hinweis: Du kannst das später in den Einstellungen ändern.',
+            Text(
+              t.storage_footer,
               textAlign: TextAlign.center,
-              style: TextStyle(color: Colors.black54),
+              style: const TextStyle(color: Colors.black54),
             ),
           ],
         ),
