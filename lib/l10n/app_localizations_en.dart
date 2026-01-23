@@ -471,6 +471,36 @@ class AppLocalizationsEn extends AppLocalizations {
   String get pdf_attached => 'PDF attached';
 
   @override
+  String get attachments => 'Attachments';
+
+  @override
+  String get add => 'Add';
+
+  @override
+  String get save_item_first => 'Save the item first to add attachments';
+
+  @override
+  String get no_attachments => 'No attachments yet';
+
+  @override
+  String get attachment_added => 'Attachment added';
+
+  @override
+  String get attachment_deleted => 'Attachment deleted';
+
+  @override
+  String get delete_attachment_confirm => 'Delete this attachment?';
+
+  @override
+  String get camera => 'Camera';
+
+  @override
+  String get gallery => 'Gallery';
+
+  @override
+  String get pdf => 'PDF';
+
+  @override
   String get delete_title => 'Delete?';
 
   @override

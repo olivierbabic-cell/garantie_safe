@@ -1019,6 +1019,66 @@ abstract class AppLocalizations {
   /// **'PDF attached'**
   String get pdf_attached;
 
+  /// No description provided for @attachments.
+  ///
+  /// In en, this message translates to:
+  /// **'Attachments'**
+  String get attachments;
+
+  /// No description provided for @add.
+  ///
+  /// In en, this message translates to:
+  /// **'Add'**
+  String get add;
+
+  /// No description provided for @save_item_first.
+  ///
+  /// In en, this message translates to:
+  /// **'Save the item first to add attachments'**
+  String get save_item_first;
+
+  /// No description provided for @no_attachments.
+  ///
+  /// In en, this message translates to:
+  /// **'No attachments yet'**
+  String get no_attachments;
+
+  /// No description provided for @attachment_added.
+  ///
+  /// In en, this message translates to:
+  /// **'Attachment added'**
+  String get attachment_added;
+
+  /// No description provided for @attachment_deleted.
+  ///
+  /// In en, this message translates to:
+  /// **'Attachment deleted'**
+  String get attachment_deleted;
+
+  /// No description provided for @delete_attachment_confirm.
+  ///
+  /// In en, this message translates to:
+  /// **'Delete this attachment?'**
+  String get delete_attachment_confirm;
+
+  /// No description provided for @camera.
+  ///
+  /// In en, this message translates to:
+  /// **'Camera'**
+  String get camera;
+
+  /// No description provided for @gallery.
+  ///
+  /// In en, this message translates to:
+  /// **'Gallery'**
+  String get gallery;
+
+  /// No description provided for @pdf.
+  ///
+  /// In en, this message translates to:
+  /// **'PDF'**
+  String get pdf;
+
   /// No description provided for @delete_title.
   ///
   /// In en, this message translates to:

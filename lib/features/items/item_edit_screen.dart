@@ -1,11 +1,24 @@
 // lib/features/items/item_edit_screen.dart
 
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:garantie_safe/l10n/app_localizations.dart';
+import 'package:image_picker/image_picker.dart';
+import 'package:file_picker/file_picker.dart';
+import 'package:open_filex/open_filex.dart';
+import 'package:path/path.dart' as p;
+import 'package:path_provider/path_provider.dart';
 
 import 'item.dart';
 import 'items_providers.dart';
+import 'item_attachment.dart';
+import 'attachments_repository.dart';
+
+final attachmentsRepositoryProvider = Provider<AttachmentsRepository>((ref) {
+  return AttachmentsRepository();
+});
 
 class ItemEditScreen extends ConsumerStatefulWidget {
   const ItemEditScreen({super.key, this.itemId});
@@ -30,6 +43,11 @@ class _ItemEditScreenState extends ConsumerState<ItemEditScreen> {
 
   bool _saving = false;
   bool _initialized = false;
+
+  // Attachments state
+  int? _savedItemId; // Item ID after save (needed for attachments)
+  List<ItemAttachment> _attachments = [];
+  bool _loadingAttachments = false;
 
   @override
   void dispose() {
@@ -58,6 +76,7 @@ class _ItemEditScreenState extends ConsumerState<ItemEditScreen> {
 
     if (existing == null) return;
 
+    _savedItemId = existing.id;
     _titleCtrl.text = existing.title;
     _merchantCtrl.text = existing.merchant ?? '';
     _notesCtrl.text = existing.notes ?? '';
@@ -73,6 +92,9 @@ class _ItemEditScreenState extends ConsumerState<ItemEditScreen> {
         DateTime.fromMillisecondsSinceEpoch(eMs),
       );
     }
+
+    // Load attachments
+    _loadAttachments();
   }
 
   Future<void> _save(Item? existing) async {
@@ -124,6 +146,20 @@ class _ItemEditScreenState extends ConsumerState<ItemEditScreen> {
 
       await notifier.upsert(item);
 
+      // Get the item ID after save (for new items)
+      if (existing == null) {
+        // Refresh to get the newly created item with its ID
+        await notifier.refresh();
+        final items = ref.read(itemsListProvider).value ?? [];
+        // Find item by title (just created)
+        final newItem = items.where((i) => i.title == title).firstOrNull;
+        if (newItem != null) {
+          _savedItemId = newItem.id;
+        }
+      } else {
+        _savedItemId = existing.id;
+      }
+
       if (!mounted) return;
       Navigator.of(context).pop(true);
     } catch (e) {
@@ -133,6 +169,206 @@ class _ItemEditScreenState extends ConsumerState<ItemEditScreen> {
       );
     } finally {
       if (mounted) setState(() => _saving = false);
+    }
+  }
+
+  Future<void> _loadAttachments() async {
+    final itemId = _savedItemId;
+    if (itemId == null || itemId == 0) {
+      setState(() => _attachments = []);
+      return;
+    }
+
+    setState(() => _loadingAttachments = true);
+    try {
+      final repo = ref.read(attachmentsRepositoryProvider);
+      final atts = await repo.forItem(itemId);
+      if (mounted) {
+        setState(() {
+          _attachments = atts;
+          _loadingAttachments = false;
+        });
+      }
+    } catch (e) {
+      if (mounted) {
+        setState(() => _loadingAttachments = false);
+      }
+    }
+  }
+
+  Future<void> _addAttachment() async {
+    final t = AppLocalizations.of(context)!;
+    final itemId = _savedItemId;
+
+    // Item must be saved first
+    if (itemId == null || itemId == 0) {
+      if (!mounted) return;
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+            content: Text(t.save_item_first ?? 'Please save the item first')),
+      );
+      return;
+    }
+
+    // Show source picker
+    final source = await showModalBottomSheet<String>(
+      context: context,
+      builder: (context) => SafeArea(
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            ListTile(
+              leading: const Icon(Icons.camera_alt),
+              title: Text(t.camera ?? 'Camera'),
+              onTap: () => Navigator.pop(context, 'camera'),
+            ),
+            ListTile(
+              leading: const Icon(Icons.photo_library),
+              title: Text(t.gallery ?? 'Gallery'),
+              onTap: () => Navigator.pop(context, 'gallery'),
+            ),
+            ListTile(
+              leading: const Icon(Icons.picture_as_pdf),
+              title: Text(t.pdf ?? 'PDF'),
+              onTap: () => Navigator.pop(context, 'pdf'),
+            ),
+          ],
+        ),
+      ),
+    );
+
+    if (source == null || !mounted) return;
+
+    try {
+      String? filePath;
+      String? originalName;
+      AttachmentType type;
+
+      if (source == 'camera' || source == 'gallery') {
+        final picker = ImagePicker();
+        final XFile? image = await picker.pickImage(
+          source: source == 'camera' ? ImageSource.camera : ImageSource.gallery,
+        );
+        if (image == null) return;
+        filePath = image.path;
+        originalName = p.basename(filePath);
+        type = AttachmentType.image;
+      } else {
+        // PDF
+        final result = await FilePicker.platform.pickFiles(
+          type: FileType.custom,
+          allowedExtensions: ['pdf'],
+        );
+        if (result == null || result.files.isEmpty) return;
+        filePath = result.files.first.path;
+        if (filePath == null) return;
+        originalName = result.files.first.name;
+        type = AttachmentType.pdf;
+      }
+
+      // Copy file to app documents directory
+      final appDir = await getApplicationDocumentsDirectory();
+      final attachmentsDir = Directory(p.join(appDir.path, 'attachments'));
+      if (!await attachmentsDir.exists()) {
+        await attachmentsDir.create(recursive: true);
+      }
+
+      final timestamp = DateTime.now().millisecondsSinceEpoch;
+      final extension = p.extension(filePath);
+      final newFileName = '${itemId}_$timestamp$extension';
+      final newPath = p.join(attachmentsDir.path, newFileName);
+
+      await File(filePath).copy(newPath);
+
+      // Insert into database
+      final repo = ref.read(attachmentsRepositoryProvider);
+      final maxOrder = _attachments.isEmpty
+          ? 0
+          : _attachments
+              .map((a) => a.sortOrder)
+              .reduce((a, b) => a > b ? a : b);
+
+      final attachment = ItemAttachment(
+        itemId: itemId,
+        path: newPath,
+        type: type,
+        originalName: originalName,
+        sortOrder: maxOrder + 1,
+        createdAt: DateTime.now(),
+      );
+
+      await repo.add(attachment);
+      await _loadAttachments();
+
+      if (!mounted) return;
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text(t.attachment_added ?? 'Attachment added')),
+      );
+    } catch (e) {
+      if (!mounted) return;
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('Error: $e')),
+      );
+    }
+  }
+
+  Future<void> _removeAttachment(ItemAttachment att) async {
+    final t = AppLocalizations.of(context)!;
+
+    final confirmed = await showDialog<bool>(
+      context: context,
+      builder: (context) => AlertDialog(
+        title: Text(t.delete_title),
+        content: Text(t.delete_attachment_confirm ?? 'Delete this attachment?'),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.pop(context, false),
+            child: Text(t.cancel),
+          ),
+          FilledButton(
+            onPressed: () => Navigator.pop(context, true),
+            child: Text(t.delete),
+          ),
+        ],
+      ),
+    );
+
+    if (confirmed != true || !mounted) return;
+
+    try {
+      // Delete from database
+      final repo = ref.read(attachmentsRepositoryProvider);
+      await repo.deleteById(att.id!);
+
+      // Delete file
+      try {
+        await File(att.path).delete();
+      } catch (_) {
+        // Ignore file deletion errors
+      }
+
+      await _loadAttachments();
+
+      if (!mounted) return;
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text(t.attachment_deleted ?? 'Attachment deleted')),
+      );
+    } catch (e) {
+      if (!mounted) return;
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('Error: $e')),
+      );
+    }
+  }
+
+  Future<void> _openAttachment(ItemAttachment att) async {
+    try {
+      await OpenFilex.open(att.path);
+    } catch (e) {
+      if (!mounted) return;
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('Could not open file: $e')),
+      );
     }
   }
 
@@ -249,6 +485,11 @@ class _ItemEditScreenState extends ConsumerState<ItemEditScreen> {
                     maxLines: 4,
                   ),
                   const SizedBox(height: 24),
+
+                  // Attachments section
+                  _buildAttachmentsSection(t),
+
+                  const SizedBox(height: 24),
                   FilledButton.icon(
                     onPressed: _saving ? null : () => _save(existing),
                     icon: const Icon(Icons.check),
@@ -261,6 +502,104 @@ class _ItemEditScreenState extends ConsumerState<ItemEditScreen> {
         ),
       ),
     );
+  }
+
+  Widget _buildAttachmentsSection(AppLocalizations t) {
+    final hasItem = _savedItemId != null && _savedItemId != 0;
+
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Text(
+              t.attachments ?? 'Attachments',
+              style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
+            ),
+            if (hasItem)
+              TextButton.icon(
+                onPressed: _addAttachment,
+                icon: const Icon(Icons.add),
+                label: Text(t.add ?? 'Add'),
+              ),
+          ],
+        ),
+        const SizedBox(height: 8),
+        if (!hasItem)
+          Text(
+            t.save_item_first ?? 'Save the item first to add attachments',
+            style: TextStyle(
+              color: Theme.of(context).colorScheme.onSurfaceVariant,
+              fontSize: 14,
+            ),
+          )
+        else if (_loadingAttachments)
+          const Center(
+            child: Padding(
+              padding: EdgeInsets.all(16),
+              child: CircularProgressIndicator(),
+            ),
+          )
+        else if (_attachments.isEmpty)
+          Text(
+            t.no_attachments ?? 'No attachments yet',
+            style: TextStyle(
+              color: Theme.of(context).colorScheme.onSurfaceVariant,
+              fontSize: 14,
+            ),
+          )
+        else
+          ..._attachments.map((att) => _buildAttachmentTile(att, t)),
+      ],
+    );
+  }
+
+  Widget _buildAttachmentTile(ItemAttachment att, AppLocalizations t) {
+    IconData icon;
+    switch (att.type) {
+      case AttachmentType.image:
+        icon = Icons.image;
+        break;
+      case AttachmentType.pdf:
+        icon = Icons.picture_as_pdf;
+        break;
+      case AttachmentType.other:
+        icon = Icons.insert_drive_file;
+        break;
+    }
+
+    final displayName = att.originalName ?? p.basename(att.path);
+
+    return Card(
+      margin: const EdgeInsets.only(bottom: 8),
+      child: ListTile(
+        leading: Icon(icon, size: 32),
+        title: Text(
+          displayName,
+          maxLines: 1,
+          overflow: TextOverflow.ellipsis,
+        ),
+        subtitle: Text(_formatAttachmentType(att.type)),
+        onTap: () => _openAttachment(att),
+        trailing: IconButton(
+          icon: const Icon(Icons.delete_outline),
+          onPressed: () => _removeAttachment(att),
+          tooltip: t.delete,
+        ),
+      ),
+    );
+  }
+
+  String _formatAttachmentType(AttachmentType type) {
+    switch (type) {
+      case AttachmentType.image:
+        return 'Image';
+      case AttachmentType.pdf:
+        return 'PDF';
+      case AttachmentType.other:
+        return 'File';
+    }
   }
 
   static String _fmt(DateTime d) {

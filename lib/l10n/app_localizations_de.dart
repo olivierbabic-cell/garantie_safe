@@ -471,6 +471,36 @@ class AppLocalizationsDe extends AppLocalizations {
   String get pdf_attached => 'PDF angehängt';
 
   @override
+  String get attachments => 'Anhänge';
+
+  @override
+  String get add => 'Hinzufügen';
+
+  @override
+  String get save_item_first => 'Speichern Sie zuerst den Artikel, um Anhänge hinzuzufügen';
+
+  @override
+  String get no_attachments => 'Noch keine Anhänge';
+
+  @override
+  String get attachment_added => 'Anhang hinzugefügt';
+
+  @override
+  String get attachment_deleted => 'Anhang gelöscht';
+
+  @override
+  String get delete_attachment_confirm => 'Diesen Anhang löschen?';
+
+  @override
+  String get camera => 'Kamera';
+
+  @override
+  String get gallery => 'Galerie';
+
+  @override
+  String get pdf => 'PDF';
+
+  @override
   String get delete_title => 'Löschen?';
 
   @override

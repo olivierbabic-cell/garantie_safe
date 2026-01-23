@@ -176,6 +176,17 @@
   "attachment_remove_confirm": "Do you really want to remove the attachment?",
   "pdf_attached": "PDF attached",
 
+  "attachments": "Attachments",
+  "add": "Add",
+  "save_item_first": "Save the item first to add attachments",
+  "no_attachments": "No attachments yet",
+  "attachment_added": "Attachment added",
+  "attachment_deleted": "Attachment deleted",
+  "delete_attachment_confirm": "Delete this attachment?",
+  "camera": "Camera",
+  "gallery": "Gallery",
+  "pdf": "PDF",
+
   "delete_title": "Delete?",
   "delete_confirm_title": "Delete receipt?",
   "delete_confirm": "Do you really want to delete this receipt?",
