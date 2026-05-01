@@ -2240,12 +2240,6 @@ abstract class AppLocalizations {
   /// **'This will overwrite all current data. Continue?'**
   String get backup_restore_confirm;
 
-  /// No description provided for @backup_restoring.
-  ///
-  /// In en, this message translates to:
-  /// **'Restoring backup...'**
-  String get backup_restoring;
-
   /// No description provided for @backup_restore_success.
   ///
   /// In en, this message translates to:
@@ -2966,12 +2960,6 @@ abstract class AppLocalizations {
   /// **'Please open your device Settings app and navigate to Backup settings.\n\nAndroid: Settings > System > Backup\niOS: Settings > [Your Name] > iCloud > iCloud Backup'**
   String get backup_device_settings_info;
 
-  /// No description provided for @backup_time_min_ago.
-  ///
-  /// In en, this message translates to:
-  /// **'{minutes} min ago'**
-  String backup_time_min_ago(int minutes);
-
   /// No description provided for @backup_snapshot_count_none.
   ///
   /// In en, this message translates to:
@@ -3410,6 +3398,12 @@ abstract class AppLocalizations {
   /// **'Restored: {count} warranties'**
   String backup_restored_items(int count);
 
+  /// No description provided for @backup_restoring.
+  ///
+  /// In en, this message translates to:
+  /// **'Restoring backup...'**
+  String get backup_restoring;
+
   /// No description provided for @backup_restoring_wait.
   ///
   /// In en, this message translates to:
@@ -3803,7 +3797,7 @@ abstract class AppLocalizations {
   /// No description provided for @receipt_validation_warning_message.
   ///
   /// In en, this message translates to:
-  /// **'If the document is not clearly readable, it may not be accepted for a warranty claim.'**
+  /// **'Please check that everything is clearly readable.\nOtherwise the receipt may be rejected in a warranty claim.'**
   String get receipt_validation_warning_message;
 
   /// No description provided for @receipt_validation_detected_info.

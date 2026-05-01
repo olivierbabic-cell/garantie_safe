@@ -1159,9 +1159,6 @@ class AppLocalizationsDe extends AppLocalizations {
       'Dies überschreibt alle aktuellen Daten. Fortfahren?';
 
   @override
-  String get backup_restoring => 'Backup wird wiederhergestellt...';
-
-  @override
   String get backup_restore_success =>
       'Sicherung erfolgreich wiederhergestellt. Bitte App neu starten.';
 
@@ -1583,11 +1580,6 @@ class AppLocalizationsDe extends AppLocalizations {
       'Bitte öffne die Einstellungen-App deines Geräts und navigiere zu den Backup-Einstellungen.\n\nAndroid: Einstellungen > System > Sicherung\niOS: Einstellungen > [Dein Name] > iCloud > iCloud-Backup';
 
   @override
-  String backup_time_min_ago(int minutes) {
-    return 'Vor $minutes Min.';
-  }
-
-  @override
   String get backup_snapshot_count_none => 'Keine';
 
   @override
@@ -1844,6 +1836,9 @@ class AppLocalizationsDe extends AppLocalizations {
   }
 
   @override
+  String get backup_restoring => 'Backup wird wiederhergestellt...';
+
+  @override
   String get backup_restoring_wait => 'Dies kann einige Momente dauern';
 
   @override
@@ -2071,7 +2066,7 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String get receipt_validation_warning_message =>
-      'Wenn das Dokument nicht klar lesbar ist, wird es möglicherweise nicht für eine Garantieanforderung akzeptiert.';
+      'Bitte prüfe, ob alles gut lesbar ist.\nBeleg kann bei einem Garantiefall ansonsten abgelehnt werden.';
 
   @override
   String get receipt_validation_detected_info => 'Erkannte Informationen:';

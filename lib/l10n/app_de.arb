@@ -455,7 +455,6 @@
   "backup_failed": "Sicherung fehlgeschlagen",
   "backup_restore_confirm_title": "Sicherung wiederherstellen?",
   "backup_restore_confirm": "Dies überschreibt alle aktuellen Daten. Fortfahren?",
-  "backup_restoring": "Stelle Sicherung wieder her...",
   "backup_restore_success": "Sicherung erfolgreich wiederhergestellt. Bitte App neu starten.",
   "backup_restore_failed": "Wiederherstellung fehlgeschlagen",
   "backup_select_location": "Sicherungsordner auswählen",
@@ -687,23 +686,6 @@
   "backup_cloud_title": "Cloud-Backup",
   "backup_cloud_message": "Wenn Cloud-Backup aktiviert ist, wird bei jedem Backup zusätzlich eine Exportdatei erstellt, die du in deinem Cloud-Speicher (Google Drive, iCloud Drive, etc.) speichern kannst.\n\nTippe auf \"In Cloud exportieren\", um das Backup an deinem bevorzugten Ort zu speichern.",
   "backup_device_settings_info": "Bitte öffne die Einstellungen-App deines Geräts und navigiere zu den Backup-Einstellungen.\n\nAndroid: Einstellungen > System > Sicherung\niOS: Einstellungen > [Dein Name] > iCloud > iCloud-Backup",
-  "backup_time_just_now": "Gerade eben",
-  "backup_time_min_ago": "Vor {minutes} Min.",
-  "@backup_time_min_ago": {
-    "placeholders": {
-      "minutes": {
-        "type": "int"
-      }
-    }
-  },
-  "backup_time_hours_ago": "Vor {hours} Stunden",
-  "@backup_time_hours_ago": {
-    "placeholders": {
-      "hours": {
-        "type": "int"
-      }
-    }
-  },
   "backup_snapshot_count_none": "Keine",
   "backup_snapshot_count_daily": "{count} täglich",
   "@backup_snapshot_count_daily": {
@@ -950,7 +932,7 @@
   "backup_restore_warning_replace": "Dein aktueller App-Inhalt wird durch dieses Backup ersetzt. Dies kann nicht rückgängig gemacht werden.",
 
   "receipt_validation_warning_title": "Dieses Dokument ist möglicherweise schwer zu lesen",
-  "receipt_validation_warning_message": "Bitte prüfe, ob alles gut lesbar ist.\nBeleg kann bei einem Garantiefall ansonsten abgelehnt werden."
+  "receipt_validation_warning_message": "Bitte prüfe, ob alles gut lesbar ist.\nBeleg kann bei einem Garantiefall ansonsten abgelehnt werden.",
   "receipt_validation_detected_info": "Erkannte Informationen:",
   "receipt_validation_words": "Wörter",
   "receipt_validation_lines": "Zeilen",

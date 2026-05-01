@@ -1146,9 +1146,6 @@ class AppLocalizationsEn extends AppLocalizations {
       'This will overwrite all current data. Continue?';
 
   @override
-  String get backup_restoring => 'Restoring backup...';
-
-  @override
   String get backup_restore_success =>
       'Backup restored successfully. Please restart the app.';
 
@@ -1567,11 +1564,6 @@ class AppLocalizationsEn extends AppLocalizations {
       'Please open your device Settings app and navigate to Backup settings.\n\nAndroid: Settings > System > Backup\niOS: Settings > [Your Name] > iCloud > iCloud Backup';
 
   @override
-  String backup_time_min_ago(int minutes) {
-    return '$minutes min ago';
-  }
-
-  @override
   String get backup_snapshot_count_none => 'None';
 
   @override
@@ -1824,6 +1816,9 @@ class AppLocalizationsEn extends AppLocalizations {
   }
 
   @override
+  String get backup_restoring => 'Restoring backup...';
+
+  @override
   String get backup_restoring_wait => 'This may take a few moments';
 
   @override
@@ -2049,7 +2044,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get receipt_validation_warning_message =>
-      'If the document is not clearly readable, it may not be accepted for a warranty claim.';
+      'Please check that everything is clearly readable.\nOtherwise the receipt may be rejected in a warranty claim.';
 
   @override
   String get receipt_validation_detected_info => 'Detected Information:';

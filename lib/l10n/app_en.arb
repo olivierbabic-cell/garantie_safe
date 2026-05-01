@@ -459,7 +459,6 @@
   "backup_failed": "Backup failed",
   "backup_restore_confirm_title": "Restore backup?",
   "backup_restore_confirm": "This will overwrite all current data. Continue?",
-  "backup_restoring": "Restoring backup...",
   "backup_restore_success": "Backup restored successfully. Please restart the app.",
   "backup_restore_failed": "Restore failed",
   "backup_select_location": "Select backup folder",
@@ -691,23 +690,6 @@
   "backup_cloud_title": "Cloud Backup",
   "backup_cloud_message": "When cloud backup is enabled, every time you create a backup, it will also be exported so you can save it to your cloud storage (Google Drive, iCloud Drive, etc.).\n\nTap \"Export to Cloud\" to save the backup to your preferred location.",
   "backup_device_settings_info": "Please open your device Settings app and navigate to Backup settings.\n\nAndroid: Settings > System > Backup\niOS: Settings > [Your Name] > iCloud > iCloud Backup",
-  "backup_time_just_now": "Just now",
-  "backup_time_min_ago": "{minutes} min ago",
-  "@backup_time_min_ago": {
-    "placeholders": {
-      "minutes": {
-        "type": "int"
-      }
-    }
-  },
-  "backup_time_hours_ago": "{hours} hours ago",
-  "@backup_time_hours_ago": {
-    "placeholders": {
-      "hours": {
-        "type": "int"
-      }
-    }
-  },
   "backup_snapshot_count_none": "None",
   "backup_snapshot_count_daily": "{count} daily",
   "@backup_snapshot_count_daily": {
