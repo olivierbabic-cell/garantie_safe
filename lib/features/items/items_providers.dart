@@ -1,10 +1,12 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../../core/db/db_providers.dart';
 import 'item.dart';
 import 'items_repository.dart';
 
 final itemsRepositoryProvider = Provider<ItemsRepository>((ref) {
-  return ItemsRepository();
+  final dbManager = ref.watch(databaseManagerProvider);
+  return ItemsRepository(dbManager: dbManager);
 });
 
 /// Wichtig: Provider-Name so, dass du ihn im Screen verwenden kannst.

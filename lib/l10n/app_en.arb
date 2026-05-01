@@ -1,12 +1,15 @@
 {
   "@@locale": "en",
   "test_key": "Test",
+  "test_umlaut": "Umlaut test (English - no special chars)",
   "appTitle": "GarantieSafe",
 
   "onb_welcome_headline": "Keep all your warranties in view – secure, private, under your control.",
   "onb_welcome_hint": "Note: For warranty cases always scan the entire receipt.",
-  "onb_lets_go": "Let’s go",
-
+  "onb_lets_go": "Let’s go",  "onb_start_fresh": "Start fresh",
+  "onb_restore_backup": "Restore from backup",
+  "onb_restore_cancelled": "Restore cancelled",
+  "onb_restore_failed": "Restore failed",
   "storage_title": "Choose storage location",
   "storage_question": "Where should your data be stored?",
   "storage_local": "Only on this device",
@@ -17,17 +20,45 @@
   "payments_intro": "Which payment methods do you usually use? This speeds up capturing new receipts.",
   "payments_save": "Save",
   "pm_cash": "Cash",
+  "pm_debit_card": "Debit card",
+  "pm_credit_card": "Credit card",
+  "pm_visa": "Visa",
+  "pm_mastercard": "Mastercard",
+  "pm_american_express": "American Express",
+  "pm_maestro": "Maestro",
+  "pm_apple_pay": "Apple Pay",
+  "pm_google_pay": "Google Pay",
+  "pm_samsung_pay": "Samsung Pay",
+  "pm_paypal": "PayPal",
+  "pm_twint": "Twint",
+  "pm_klarna": "Klarna / Buy now pay later",
+  "pm_gift_card_voucher": "Gift card / Voucher",
+  "pm_bank_transfer": "Bank transfer",
+  "pm_venmo": "Venmo",
+  "pm_cash_app": "Cash App",
+  "pm_other": "Other",
   "pm_debit": "EC / Maestro / Debit card",
   "pm_credit": "Credit card (Visa/Mastercard/Amex)",
-  "pm_twint": "Twint",
-  "pm_paypal": "PayPal",
   "pm_applepay": "Apple Pay",
   "pm_googlepay": "Google Pay",
   "pm_invoice": "Invoice / Klarna",
   "pm_giftcard": "Gift card / voucher",
   "pm_financing": "Financing / installments",
-  "pm_other": "Other",
   "snack_saved_prefix": "Saved",
+
+  "setup_hub_title": "Setup & Preferences",
+  "setup_hub_subtitle": "Configure your app settings",
+  "setup_hub_note": "Each section can be changed independently anytime.",
+  "setup_hub_card_title": "Setup & Preferences",
+  "setup_hub_card_subtitle": "Configure backup, notifications, payments & security",
+  "setup_backup_title": "Backup",
+  "setup_backup_subtitle": "Automatic backups in secure storage",
+  "setup_notifications_title": "Notifications",
+  "setup_notifications_subtitle": "Warranty expiry reminders",
+  "setup_payment_methods_title": "Payment Methods",
+  "setup_payment_methods_subtitle": "Quick options for adding items",
+  "setup_security_title": "Security",
+  "setup_security_subtitle": "App lock with device biometrics",
 
   "notif_title": "Reminders & notifications",
   "notif_enable": "Enable reminders",
@@ -62,11 +93,47 @@
   "optional": "Optional",
   "not_set": "Not set",
   "field_required": "Required",
+  "category_required": "Please select a category",
   "save_failed": "Save failed",
 
   "home_title": "Garantie Safe",
+  "home_subtitle": "Keep track of all your warranties",
   "home_welcome": "Welcome!",
   "home_restart_onboarding": "Restart onboarding",
+  "home_add_card_title": "Add New Receipt",
+  "home_add_card_subtitle": "Scan a receipt or add manually",
+  "home_scan_button": "Scan",
+  "home_manual_button": "Add Manually",
+  "home_items_section_title": "Your Receipts",
+  "home_items_empty": "No receipts yet",
+  "home_items_empty_subtitle": "Add your first receipt to get started",
+  "home_scan": "Scan",
+  "home_import": "Import",
+  "home_receipts": "Receipts",
+  "home_settings": "Settings",
+  "home_status_active_items": "{count} active items",
+  "@home_status_active_items": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "home_status_expiring_soon": "{count} expiring soon",
+  "@home_status_expiring_soon": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "home_status_all_good": "All good",
+  "import_source_title": "Import",
+  "import_source_subtitle": "Choose a source",
+  "import_photo": "Photo",
+  "import_photo_subtitle": "Pick from gallery",
+  "import_pdf": "PDF",
+  "import_pdf_subtitle": "Choose PDF document",
 
   "notifications_title": "Notifications",
   "notifications_intro": "Choose which events you want to be notified about",
@@ -77,6 +144,28 @@
   "notifications_summary": "Weekly summary",
   "notifications_summary_sub": "Receive a weekly overview of your warranties",
   "notifications_finish": "Finish setup",
+  
+  "notif_warranty_expiring_soon_title": "Warranty expiring soon",
+  "notif_warranty_expires_today_title": "Warranty expires today",
+  "notif_warranty_expires_in_days_body": "{itemTitle} expires in {days} days.",
+  "@notif_warranty_expires_in_days_body": {
+    "placeholders": {
+      "itemTitle": {
+        "type": "String"
+      },
+      "days": {
+        "type": "int"
+      }
+    }
+  },
+  "notif_warranty_expires_today_body": "{itemTitle} expires today.",
+  "@notif_warranty_expires_today_body": {
+    "placeholders": {
+      "itemTitle": {
+        "type": "String"
+      }
+    }
+  },
   "notifications_summary_time_title": "Summary time",
   "notifications_lead_title": "Lead time (days)",
   "notifications_lead_sub": "How many days in advance should we remind you?",
@@ -99,9 +188,21 @@
   "unlock": "Unlock",
 
   "settings_title": "Settings",
+  "settings_section_preferences": "Preferences",
+  "settings_section_backup_security": "Backup & Security",
+  "settings_section_data_storage": "Data & Storage",
+  "settings_section_about": "About",
+  "settings_section_developer": "Developer Options",
   "settings_section_general": "General",
   "settings_section_notifications": "Notifications",
   "settings_section_security": "Security",
+  "settings_appearance": "Appearance",
+  "settings_appearance_sub": "Theme and display settings",
+  "settings_payment_methods": "Payment methods",
+  "settings_payment_methods_sub": "Manage saved payment methods",
+  "settings_app_lock": "App Lock",
+  "settings_app_lock_sub": "Secure your app with biometric authentication",
+  "settings_app_version": "App version",
   "settings_dark_mode": "Dark mode",
   "settings_dark_mode_sub": "Switch between light and dark theme",
   "settings_language": "Language",
@@ -129,8 +230,8 @@
   "items_updated": "Receipt updated",
   "items_edit_title": "Edit receipt",
   "items_edit": "Edit receipt",
-  "items_name": "Title",
-  "items_name_hint": "e.g. iPhone 15 Pro",
+  "items_name": "Product name",
+  "items_name_hint": "e.g. Coffee machine, TV, Drill",
   "items_merchant_hint": "e.g. MediaMarkt Zug",
   "items_pick_purchase_date": "Pick purchase date",
   "items_pick_expiry_date": "Pick expiry date",
@@ -138,10 +239,19 @@
   "items_payment_method_hint": "e.g. credit card, Twint, …",
   "items_category": "Category",
   "items_category_hint": "Select one",
+  "attachment_required": "A receipt or document is required.",
 
   "warranty_years": "Warranty (years)",
   "years_suffix": "years",
   "custom_expiry": "Manual entry",
+  "warranty_custom": "Custom",
+  "warranty_custom_years": "Custom warranty (years)",
+  "warranty_custom_dialog_title": "Enter custom warranty duration",
+  "warranty_custom_dialog_hint": "Number of years (1-10)",
+  "warranty_custom_error_min": "Minimum 1 year",
+  "warranty_custom_error_max": "Maximum 10 years",
+  "warranty_custom_error_invalid": "Please enter a valid number",
+  "expiry_date_required": "Please set warranty duration or expiry date",
 
   "item_notes": "Notes",
   "item_notes_hint": "Repair IDs, serial numbers, seller, remarks …",
@@ -210,13 +320,27 @@
   "cat_other": "Other",
 
   "filter_all": "All",
+  "filter_active": "Active",
   "filter_due_soon": "Due soon",
   "filter_expired": "Expired",
   "filter_category_label": "Category",
   "filter_category_all": "All categories",
 
   "status_expired": "Expired",
+  "status_no_warranty": "No warranty",
   "status_today": "Today",
+  "status_month_left": "1 month left",
+  "status_months_left": "{months} months left",
+  "@status_months_left": {"placeholders": {"months": {"type": "int"}}},
+  "status_year_left": "1 year left",
+  "status_years_left": "{years} years left",
+  "@status_years_left": {"placeholders": {"years": {"type": "int"}}},
+  "status_years_months_left": "{years} years {months} months left",
+  "@status_years_months_left": {"placeholders": {"years": {"type": "int"}, "months": {"type": "int"}}},
+  "status_expired_recently": "Expired recently",
+  "status_expired_year_ago": "Expired 1 year ago",
+  "status_expired_years_ago": "Expired {years} years ago",
+  "@status_expired_years_ago": {"placeholders": {"years": {"type": "int"}}},
 
   "status_in_day": "In 1 day",
   "status_in_days": "In {days} days",
@@ -241,11 +365,45 @@
 
   "filter_soon": "Expiring soon",
 
+  "status_expires_today": "Expires today",
+  "status_expiring_in_days": "Expiring in {days} days",
+  "status_expiring_in_day": "Expiring in 1 day",
+  "status_expired_days_ago": "Expired {days} days ago",
+  "status_expired_day_ago": "Expired 1 day ago",
+
+  "use_warranty_duration": "Use warranty duration instead",
+  "no_receipt_warning": "No receipt attached",
+  "no_receipt_indicator": "No receipt",
+
   "merchant_label": "Merchant",
   "category_label": "Category",
   "purchase_date_label": "Purchase date",
   "expiry_date_label": "Expiry date",
   "payment_method_label": "Payment method",
+  "payment_methods_title": "Payment Methods",
+  "payment_methods_subtitle": "Manage your payment methods",
+  "payment_methods_add": "Add payment method",
+  "payment_methods_add_dialog_title": "New payment method",
+  "payment_methods_add_dialog_hint": "Enter method name",
+  "payment_methods_add_dialog_save": "Add",
+  "payment_methods_edit_dialog_title": "Edit payment method",
+  "payment_methods_edit_dialog_save": "Save",
+  "payment_methods_delete_confirm_title": "Delete payment method?",
+  "payment_methods_delete_confirm_message": "This cannot be undone.",
+  "payment_methods_delete_confirm_ok": "Delete",
+  "payment_methods_cannot_delete_message": "This method is used by {count} items. It has been archived instead.",
+  "payment_methods_archived": "Archived",
+  "payment_methods_archived_edit_hint": "Currently selected (archived)",
+  "payment_methods_disabled": "Disabled",
+  "payment_methods_enabled": "Enabled",
+  "payment_methods_custom": "Custom",
+  "payment_methods_builtin": "Built-in",
+  "payment_methods_empty": "No payment methods configured",
+  "payment_methods_section_enabled": "Active methods",
+  "payment_methods_section_disabled": "Disabled methods",
+  "payment_methods_section_archived": "Archived methods",
+  "payment_methods_empty_notice": "No payment methods configured. Set them up first.",
+  "payment_methods_configure": "Configure payment methods",
 
   "empty_all_title": "No items",
   "empty_all_hint": "You haven't added any items yet.",
@@ -257,6 +415,579 @@
   "error_generic_title": "Something went wrong",
   "retry": "Retry",
 
-  "more": "More"
+  "more": "More",
+
+  "backup_title": "Backup & Restore",
+  "backup_now": "Backup now",
+  "backup_restore": "Restore from backup",
+  "backup_auto": "Auto backup",
+  "backup_frequency": "Backup frequency",
+  "backup_weekly": "Weekly",
+  "backup_monthly": "Monthly",
+  "backup_location": "Backup location",
+  "backup_location_not_set": "Not selected",
+  "backup_location_required": "Backup location is required",
+  "backup_last_backup": "Last backup",
+  "backup_never": "Never",
+  "backup_time_just_now": "Just now",
+  "backup_time_minutes_ago": "{minutes} minutes ago",
+  "@backup_time_minutes_ago": {
+    "placeholders": {
+      "minutes": {
+        "type": "int"
+      }
+    }
+  },
+  "backup_time_hours_ago": "{hours} hours ago",
+  "@backup_time_hours_ago": {
+    "placeholders": {
+      "hours": {
+        "type": "int"
+      }
+    }
+  },
+  "backup_time_days_ago": "{days} days ago",
+  "@backup_time_days_ago": {
+    "placeholders": {
+      "days": {
+        "type": "int"
+      }
+    }
+  },
+  "backup_in_progress": "Creating backup...",
+  "backup_success": "Backup created successfully",
+  "backup_failed": "Backup failed",
+  "backup_restore_confirm_title": "Restore backup?",
+  "backup_restore_confirm": "This will overwrite all current data. Continue?",
+  "backup_restoring": "Restoring backup...",
+  "backup_restore_success": "Backup restored successfully. Please restart the app.",
+  "backup_restore_failed": "Restore failed",
+  "backup_select_location": "Select backup folder",
+  "backup_select_file": "Select backup file",
+  "backup_save_dialog_title": "Save Backup",
+  "backup_required_title": "Backup required",
+  "backup_required_body": "Backup is required to protect your receipts and attachments. Please select a backup location.",
+  "backup_no_server_info": "We do NOT have servers. Your data is stored only on your device and in the backup location you choose.",
+  "backup_share": "Share backup file",
+  "backupExportReminderTitle": "Export reminder",
+  "backupExportReminderMessage": "Consider exporting a backup to keep a safe copy outside the app.",
+  "backupExportButton": "Export",
+
+  "trash_title": "Trash",
+  "trash_empty": "Trash is empty",
+  "trash_deleted_on": "Deleted on",
+  "trash_restore": "Restore",
+  "trash_delete_permanently": "Delete permanently",
+  "trash_restore_confirm_title": "Restore item?",
+  "trash_restore_confirm": "This will restore the item to your warranties list.",
+  "trash_delete_confirm_title": "Delete permanently?",
+  "trash_delete_confirm": "This will permanently delete the item and all attachments. This cannot be undone!",
+  "trash_restored": "Item restored",
+  "trash_deleted": "Item permanently deleted",
+  "trash_purge_old": "Auto-cleanup ran: {count} old items purged",
+
+  "scan_choose_source": "Choose source",
+  "scan_choose_source_sub": "Select how you want to add your receipt:",
+  "scan_take_photo": "Take Photo",
+  "scan_take_photo_sub": "Use camera to capture receipt",
+  "scan_upload_receipt": "Upload Receipt",
+  "scan_upload_receipt_sub": "Select from Files, Downloads, Drive, etc.",
+  "scan_how_it_works": "How it works",
+  "scan_how_it_works_steps": "1. Take a photo or select a file (image/PDF)\n2. Text will be extracted automatically\n3. Review and edit the detected details\n4. Save your warranty",
+  "scan_extracting_text": "Extracting text...",
+  "scan_extracting_wait": "This may take a few moments",
+  "scan_file_access_error": "Could not access the selected file",
+  "scan_unsupported_file_type": "Unsupported file type: {extension}",
+  "@scan_unsupported_file_type": {
+    "placeholders": {
+      "extension": {
+        "type": "String"
+      }
+    }
+  },
+  "scan_ocr_failed": "We couldn't read this receipt clearly. Please enter the details manually.",
+
+  "scan_review_title": "Receipt Scanned",
+  "scan_review_subtitle": "Please review the detected details before saving:",
+  "scan_review_merchant": "Merchant",
+  "scan_review_purchase_date": "Purchase Date",
+  "scan_review_attachment": "Attachment",
+  "scan_review_files_attached": "{count} file(s) attached",
+  "@scan_review_files_attached": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "scan_review_attached": "Attached",
+  "scan_attachment_failed_title": "Receipt Attached",
+  "scan_attachment_failed_message": "We couldn't read this receipt clearly. The file has been attached, but please enter the details manually.",
+  "scan_success": "Receipt scanned and attached successfully",
+
+  "multi_item_choice_title": "How many items?",
+  "multi_item_choice_subtitle": "One receipt can be used for multiple warranty items",
+  "multi_item_create_one": "Create one item",
+  "multi_item_create_multiple": "Create multiple items",
+
+  "multi_item_screen_title": "Create Multiple Items",
+  "multi_item_shared_section": "Shared Receipt Data",
+  "multi_item_shared_info": "Merchant, purchase date and receipt are reused for all items. Only product-specific details need to be entered.",
+  "multi_item_items_section": "Warranty Items",
+  "multi_item_item_number": "Item {number}",
+  "@multi_item_item_number": {
+    "placeholders": {
+      "number": {
+        "type": "int"
+      }
+    }
+  },
+  "multi_item_add_another": "Add another item",
+  "multi_item_create_button": "Create {count} {count, plural, =1{item} other{items}}",
+  "@multi_item_create_button": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "multi_item_validation_error": "Please fill in all required fields for each item",
+  "multi_item_success": "{count} items created successfully",
+  "@multi_item_success": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "multi_item_add_from_receipt": "Add another product from this receipt",
+  "multi_item_add_from_receipt_subtitle": "Reuse merchant and purchase date",
+
+  "add_entry_title": "Add Item",
+  "add_upload_image_pdf": "Upload image or PDF",
+  "add_manually": "Add manually",
+  "scan_button": "Scan",
+  "scan_button_camera": "Scan with camera",
+
+  "snapshot_section_recommended": "Recommended",
+  "snapshot_section_recent": "Recent backups",
+  "snapshot_section_daily": "Daily backups",
+  "snapshot_section_weekly": "Weekly backups",
+  "snapshot_section_monthly": "Monthly backups",
+  "snapshot_current_state": "Current state",
+  "snapshot_empty_label": "Empty",
+
+  "premium_upgrade_title": "Upgrade to Premium",
+  "premium_limit_reached": "You've reached the free limit",
+  "premium_free_limit_info": "The free version allows up to {count} active items.",
+  "@premium_free_limit_info": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "premium_unlock_title": "Premium Lifetime Unlock",
+  "premium_feature_unlimited": "Unlimited items",
+  "premium_feature_lifetime": "One-time payment, yours forever",
+  "premium_feature_no_subscription": "No subscriptions or recurring fees",
+  "premium_feature_offline": "Works completely offline",
+  "premium_price": "Only {price}",
+  "@premium_price": {
+    "placeholders": {
+      "price": {
+        "type": "String"
+      }
+    }
+  },
+  "premium_upgrade": "Upgrade",
+  "premium_restore": "Restore Purchase",
+  "premium_not_now": "Not Now",
+  "premium_purchase_initiated": "Purchase initiated...",
+  "premium_purchase_failed": "Purchase failed. Please try again.",
+  "premium_purchase_error": "Purchase error",
+  "premium_restored": "Premium restored successfully!",
+  "premium_no_purchase_found": "No previous purchase found",
+  "premium_restore_error": "Restore error",
+  "premium_status_free": "Free ({current}/{max} items)",
+  "@premium_status_free": {
+    "placeholders": {
+      "current": {
+        "type": "int"
+      },
+      "max": {
+        "type": "int"
+      }
+    }
+  },
+  "premium_status_premium": "Premium (Unlimited)",
+  "premium_card_title": "Premium Status",
+  "premium_card_subtitle_free": "You are using the free version",
+  "premium_card_subtitle_premium": "You have Premium access",
+  "premium_buy_lifetime": "Buy Lifetime Unlock",
+  "premium_unlocked_via": "Unlocked via {source}",
+  "@premium_unlocked_via": {
+    "placeholders": {
+      "source": {
+        "type": "String"
+      }
+    }
+  },
+
+  "error": "Error",
+  "error_with_details": "Error: {details}",
+  "@error_with_details": {
+    "placeholders": {
+      "details": {
+        "type": "String"
+      }
+    }
+  },
+  "ok": "OK",
+  "enable": "Enable",
+  "disable": "Disable",
+  "continue_button": "Continue",
+  "deleted": "Deleted",
+  "restore_button": "Restore",
+
+  "backup_snapshot_failed": "Snapshot failed: {error}",
+  "@backup_snapshot_failed": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "backup_select_valid_file": "Please select a valid backup file (.gsbackup)",
+  "backup_restore_completed": "Restore Completed",
+  "backup_restore_failed_details": "Restore failed: {error}",
+  "@backup_restore_failed_details": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "backup_exported_successfully": "Backup exported successfully",
+  "backupExportFailed": "Failed to export: {error}",
+  "@backupExportFailed": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "backup_cloud_exported": "Backup exported to cloud successfully",
+  "backup_cloud_export_failed": "Cloud export failed: {error}",
+  "@backup_cloud_export_failed": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "backup_disable_cloud_title": "Disable Cloud Backup?",
+  "backup_disable_cloud_message": "Cloud backup will no longer be automatic. You can still manually export backups.",
+  "backup_cloud_title": "Cloud Backup",
+  "backup_cloud_message": "When cloud backup is enabled, every time you create a backup, it will also be exported so you can save it to your cloud storage (Google Drive, iCloud Drive, etc.).\n\nTap \"Export to Cloud\" to save the backup to your preferred location.",
+  "backup_device_settings_info": "Please open your device Settings app and navigate to Backup settings.\n\nAndroid: Settings > System > Backup\niOS: Settings > [Your Name] > iCloud > iCloud Backup",
+  "backup_time_just_now": "Just now",
+  "backup_time_min_ago": "{minutes} min ago",
+  "@backup_time_min_ago": {
+    "placeholders": {
+      "minutes": {
+        "type": "int"
+      }
+    }
+  },
+  "backup_time_hours_ago": "{hours} hours ago",
+  "@backup_time_hours_ago": {
+    "placeholders": {
+      "hours": {
+        "type": "int"
+      }
+    }
+  },
+  "backup_snapshot_count_none": "None",
+  "backup_snapshot_count_daily": "{count} daily",
+  "@backup_snapshot_count_daily": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "backup_snapshot_count_weekly": "{count} weekly",
+  "@backup_snapshot_count_weekly": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "backup_snapshot_count_monthly": "{count} monthly",
+  "@backup_snapshot_count_monthly": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "backup_snapshot_count_total": "{total} available",
+  "@backup_snapshot_count_total": {
+    "placeholders": {
+      "total": {
+        "type": "int"
+      }
+    }
+  },
+  "backup_status_header": "Backup Status",
+  "backup_last_backup_label": "Last successful backup:",
+  "backup_snapshots_available_label": "Snapshots available:",
+  "backup_next_scheduled_label": "Next backup scheduled:",
+  "backup_status_label": "Status:",
+  "backup_status_up_to_date": "Up to date",
+  "backup_last_error": "Last error: {error}",
+  "@backup_last_error": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "backup_cloud_outdated_title": "Cloud Backup Outdated",
+  "backup_cloud_outdated_message": "Your last internal backup is more recent than your last cloud export. Consider exporting to cloud again for complete protection.",
+  "backup_export_to_cloud_now": "Export to Cloud Now",
+  "backup_internal_protection_title": "Internal Backup Protection",
+  "backup_internal_protection_message": "Internal backups protect against accidental changes inside the app. Multiple snapshots (daily, weekly, monthly) are maintained for recovery. Stored securely in app-private storage.",
+  "backup_device_protection_title": "Device Backup Protection",
+  "backup_device_protection_message": "Your data is included in device backup (Google Backup on Android, iCloud on iOS). This protects against device loss, uninstall, and moving to a new phone. Data is restored automatically when setting up a new device.",
+  "backup_external_protection_title": "External Backup (Optional)",
+  "backup_external_protection_message": "For extra security, export backup files manually and save to cloud storage (Google Drive, iCloud Drive, Dropbox, etc.) or external devices. Recommended for critical data.",
+  "backup_create_update_now": "Create/update backup immediately",
+  "backup_export_to_cloud_storage": "Export backup file to cloud storage, email, or external device",
+  "backup_export_tip": "Tip: Save exported backups to Google Drive, iCloud Drive, or Dropbox for maximum protection.",
+  "backup_cloud_section_header": "Cloud Backup",
+  "backup_auto_export_prompt": "Automatically prompt to export backups to your cloud storage",
+  "backup_cloud_export_status": "Cloud Export Status",
+  "backup_last_cloud_export": "Last cloud export:",
+  "backup_export_to_cloud_button": "Export to Cloud",
+  "backup_export_to_cloud_help": "Save backup to Google Drive, iCloud Drive, or another cloud service",
+  "backup_device_section_header": "Device Backup",
+  "backup_device_may_protect": "Your phone may also protect app data",
+  "backup_device_protection_info": "Your device backup (iCloud on iOS, Google Backup on Android) may include app data. This provides additional protection when setting up a new device.",
+  "backup_open_device_settings": "Open Device Backup Settings",
+  "backup_restore_section_header": "Restore",
+  "backup_restore_from_backup": "Restore from backup",
+  "backup_restore_from_storage": "Restore from the backup in app storage",
+  "backup_no_internal_backup": "No internal backup available",
+  "backup_restore_from_file": "Restore from file",
+  "backup_restore_from_file_help": "Select a backup file from your device or cloud storage",
+  "backup_health_protected": "Protected",
+  "backup_health_partial": "Partial Protection",
+  "backup_health_full_message": "Your data is fully protected with internal snapshots and device backup",
+  "backup_health_partial_message": "Internal backups are active, but cloud export is recommended for maximum protection",
   
+  "backupStatusSafe": "Your data is safe",
+  "backupStatusNeedsBackup": "Backup recommended",
+  "backupLastBackupLabel": "Last backup",
+  "backupActionsTitle": "Backup Actions",
+  "backupCloudTitle": "Cloud Backup",
+  "backupCloudDescription": "Automatically save backups to your cloud storage",
+  "backupRestoreTitle": "Restore",
+  "backupCloudSetup": "Setup Cloud Backup",
+  "backupCloudSetupDescription": "Choose a folder where backups will be automatically saved",
+  "backupCloudConfigured": "Cloud backup active",
+  "backupCloudFolderLabel": "Backup folder",
+  "backupCloudLastBackup": "Last cloud backup",
+  "backupCloudChangeFolder": "Change Folder",
+  "backupCloudDisable": "Disable Cloud Backup",
+  "backupCloudSetupError": "Failed to setup cloud backup",
+  "backupCloudAccessError": "Cannot access folder. Please choose a different folder.",
+  "backupCloudBackupNow": "Backup to Cloud Now",
+  "backupCloudBackupSuccess": "Backup saved to cloud folder",
+  "backupCloudBackupFailed": "Cloud backup failed",
+  "backupCloudDisableConfirm": "Disable automatic cloud backup? Your existing backup files will not be deleted.",
+  "backupCloudAutomatic": "Automatic Cloud Backup",
+  
+  "backup_setup_title": "Backup Setup",
+  "backup_choose_title": "Choose Backup",
+  "backup_no_backups_title": "No backups available",
+  "backup_no_backups_subtitle": "Backups are created automatically",
+  "backup_restore_title": "Restore Backup",
+  "backup_restored_count": "Restored {count} warranties successfully",
+  "@backup_restored_count": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "backup_restore_success_message": "Your data has been restored successfully.",
+  "backup_restored_items": "Restored: {count} warranties",
+  "@backup_restored_items": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "backup_restoring": "Restoring backup...",
+  "backup_restoring_wait": "This may take a few moments",
+  "backup_contents_header": "Backup Contents",
+  "backup_info_warranties": "Warranties",
+  "backup_info_attachments": "Attachments",
+  "backup_info_size": "Size",
+  "backup_info_app_version": "App Version",
+  "backup_info_backup_type": "Backup Type",
+  "backup_type_automatic": "Automatic backup",
+  "backup_type_manual": "Manual backup",
+  "backup_legacy_format": "Legacy backup format - item count unavailable",
+  "backup_warning_header": "Warning",
+  "backup_before_restore_header": "Before You Restore",
+  "backup_restore_warning": "Restoring this backup will replace all current data. Any items, attachments, or settings added after this backup was created will be lost. This action cannot be undone.",
+  "backup_restore_this_backup": "Restore This Backup",
+  "backup_badge_recommended": "Recommended",
+  "backup_badge_empty": "Empty",
+
+  "settings_debug_premium_override": "Debug Premium Override",
+  "settings_debug_no_override": "No override (using real state)",
+  "settings_debug_forced_premium": "Forced: Premium",
+  "settings_debug_forced_free": "Forced: Free",
+  "settings_force_free": "Force Free",
+  "settings_real_state": "Real State",
+  "settings_force_premium": "Force Premium",
+  "language_name_de": "Deutsch",
+  "language_name_en": "English",
+
+  "security_no_device_lock": "Please set up a PIN, password, or biometric lock on your device first.",
+  "security_lock_enabled": "App lock enabled - you'll need to authenticate when opening",
+  "security_lock_disabled": "App lock disabled",
+  "security_screen_title": "Security",
+  "security_protect_with_lock": "Protect app with device lock",
+  "security_requires_biometric": "Requires biometric or PIN to open the app",
+  "security_no_lock_configured": "Device has no secure lock configured",
+  "security_enable_lock_info": "To use app lock, please enable a PIN, password, or biometric lock in your device settings.",
+
+  "notifications_screen_title": "Notifications",
+  "notifications_enabled": "Notifications enabled",
+  "notifications_disabled": "Notifications disabled",
+  "notifications_local_info": "Notifications are scheduled locally on your device and work even when the app is closed.",
+  "notifications_enable_reminders": "Enable warranty reminders",
+  "notifications_remind_before_expiry": "Get notified before warranties expire",
+  "notifications_reminder_schedule": "Reminder schedule (all at 09:00)",
+  "notifications_30_days_before": "30 days before expiry",
+  "notifications_7_days_before": "7 days before expiry",
+  "notifications_on_expiry_day": "On expiry day",
+  "notifications_system_permissions_note": "Note: System notification permissions must be enabled in your device settings for notifications to appear.",
+
+  "trash_restore_all_title": "Restore All from Trash",
+  "trash_restore_all_message": "Restore all {count} item(s) from trash?",
+  "@trash_restore_all_message": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "trash_restored_count": "Restored {count} item(s) from trash",
+  "@trash_restored_count": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "trash_empty_title": "Empty Trash",
+  "trash_empty_message": "Permanently delete all {count} item(s) from trash?\n\nThis action cannot be undone.",
+  "@trash_empty_message": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "trash_empty_button": "Empty Trash",
+  "trash_deleted_count": "Permanently deleted {count} item(s)",
+  "@trash_deleted_count": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "trash_restore_all": "Restore All",
+  "trash_error_display": "Error: {error}",
+  "@trash_error_display": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "trash_items_kept_info": "Deleted items are kept for 180 days",
+  "trash_auto_delete_info": "Items are kept for 180 days before automatic deletion",
+
+  "payments_error_loading": "Error loading payment methods: {error}",
+  "@payments_error_loading": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+
+  "item_could_not_open_file": "Could not open file: {error}",
+  "@item_could_not_open_file": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+
+  "onboarding_restore_from_backup": "Restore from backup",
+  "onboarding_restore_from_file": "Restore from file",
+
+  "safety_no_warranties_found": "No warranties found",
+  "warrantiesExpiringSoonTitle": "Expiring Soon",
+  "warrantiesViewAll": "View All",
+  "backup_restore_warning_empty": "This backup contains 0 warranties. Restoring it will delete all your current warranties. Are you sure you want to restore this empty backup?",
+  "backup_restore_warning_replace": "Your current app content will be replaced by this backup. This cannot be undone.",
+
+  "receipt_validation_warning_title": "This document may be hard to read",
+  "receipt_validation_warning_message": "Please check that everything is clearly readable.\nOtherwise the receipt may be rejected in a warranty claim.",
+  "receipt_validation_detected_info": "Detected Information:",
+  "receipt_validation_words": "Words",
+  "receipt_validation_lines": "Lines",
+  "receipt_validation_retake_photo": "Retake Photo",
+  "receipt_validation_choose_another": "Choose Another File",
+  "receipt_validation_use_anyway": "Use Anyway",
+
+  "receipt_validation_warning_insufficient_text": "This receipt has limited readable text. The photo quality may not be sufficient for warranty claims at some stores.",
+  "receipt_validation_warning_missing_date": "The purchase date could not be detected automatically. Make sure the date is clearly visible in the photo.",
+  "receipt_validation_warning_missing_merchant": "The merchant/store name could not be detected. Ensure the store name is visible in the photo.",
+  "receipt_validation_warning_poor_quality": "The receipt structure appears incomplete. Make sure the entire receipt is visible and in focus.",
+  "receipt_validation_warning_too_small": "The receipt appears small or far away in the photo. It may be difficult for a store to read. Try taking a closer photo.",
+  "receipt_validation_warning_blurry": "The photo appears slightly blurry. Check that the text is clearly readable before continuing.",
+  "receipt_validation_warning_few_lines": "Only a few lines of text were detected. The receipt may be incomplete or partially cut off.",
+  "receipt_validation_warning_general": "The receipt quality may not be optimal for warranty purposes. Please review the photo carefully.",
+
+  "receipt_validation_reject_title": "Document Not Readable",
+  "receipt_validation_reject_message": "This image contains no readable text. Please take a clearer photo.",
+  "receipt_validation_reject_reason": "Problem detected:",
+  "receipt_validation_reject_critically_insufficient": "Almost no text could be detected. The receipt is too blurry, dark, or cut off.",
+  "receipt_validation_reject_too_small": "The receipt is too small or far away in the photo. Please take a closer photo where the receipt fills most of the frame.",
+  "receipt_validation_reject_blurry": "The photo is too blurry to read. Hold the camera steady and ensure the receipt is in focus before taking the photo.",
+  "receipt_validation_reject_few_lines": "Too few lines detected - the receipt appears incomplete. Make sure the entire receipt is visible in the photo.",
+  "receipt_validation_reject_general": "The receipt quality is too poor to be useful for warranty claims.",
+
+  "receipt_validation_tips_title": "Tips for better receipt photos:",
+  "receipt_validation_tip_lighting": "Ensure good lighting without glare or shadows",
+  "receipt_validation_tip_focus": "Hold the camera steady and wait for the receipt to be in focus",
+  "receipt_validation_tip_flat": "Place the receipt on a flat surface",
+  "receipt_validation_tip_complete": "Capture the entire receipt from top to bottom",
+  "backup_recommended_contents": "✓ This backup is recommended based on its contents.",
+  "trash_restore_from_trash": "Restore from Trash",
+  "backup_restore_backup_button": "Restore Backup"
 }

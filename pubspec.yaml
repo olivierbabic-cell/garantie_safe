@@ -21,6 +21,8 @@ dependencies:
   path_provider: ^2.1.5
   shared_preferences: ^2.3.2
   flutter_secure_storage: ^9.2.4
+  archive: ^3.6.1
+  package_info_plus: ^8.0.0
 
   # === OCR, Dateien & Medien ===
   google_mlkit_text_recognition: ^0.13.1
@@ -33,19 +35,28 @@ dependencies:
 
   # === Krypto, Netzwerk, API ===
   cryptography: ^2.7.0
+  crypto: ^3.0.3
+  encrypt: ^5.0.3
+  pointycastle: ^3.9.1
   googleapis: ^13.2.0
   googleapis_auth: ^1.6.0
   http: ^1.2.2
   url_launcher: ^6.3.2
+  share_plus: ^10.1.3
 
   # === Lokalisierung & Benachrichtigung ===
   flutter_local_notifications: ^17.2.4
+  timezone: ^0.9.4
+  workmanager: ^0.9.0+3
   flutter_localizations:
     sdk: flutter
   intl: ^0.20.2
 
   # === Sicherheit / Auth ===
   local_auth: ^2.3.0
+
+  # === In-App Purchase ===
+  in_app_purchase: ^3.2.0
 
   # === Icons ===
   cupertino_icons: ^1.0.8

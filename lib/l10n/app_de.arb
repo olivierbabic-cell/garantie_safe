@@ -1,12 +1,15 @@
 {
   "@@locale": "de",
   "test_key": "Test",
+  "test_umlaut": "ä ö ü Ä Ö Ü ß - Umlaute Test! Für später wählen.",
   "appTitle": "GarantieSafe",
 
   "onb_welcome_headline": "Behalte all deine Garantien im Blick – sicher, privat und unter deiner Kontrolle.",
   "onb_welcome_hint": "Hinweis: Für Garantiefälle bitte immer den gesamten Kassenzettel scannen.",
-  "onb_lets_go": "Los geht’s",
-
+  "onb_lets_go": "Los geht’s",  "onb_start_fresh": "Neu beginnen",
+  "onb_restore_backup": "Aus Backup wiederherstellen",
+  "onb_restore_cancelled": "Wiederherstellung abgebrochen",
+  "onb_restore_failed": "Wiederherstellung fehlgeschlagen",
   "storage_title": "Speicherort wählen",
   "storage_question": "Wo sollen deine Daten gespeichert werden?",
   "storage_local": "Nur auf diesem Gerät",
@@ -17,17 +20,45 @@
   "payments_intro": "Welche Zahlungsarten nutzt du typischerweise? Diese Vorauswahl beschleunigt das Erfassen neuer Belege.",
   "payments_save": "Speichern",
   "pm_cash": "Barzahlung",
+  "pm_debit_card": "Debitkarte",
+  "pm_credit_card": "Kreditkarte",
+  "pm_visa": "Visa",
+  "pm_mastercard": "Mastercard",
+  "pm_american_express": "American Express",
+  "pm_maestro": "Maestro",
+  "pm_apple_pay": "Apple Pay",
+  "pm_google_pay": "Google Pay",
+  "pm_samsung_pay": "Samsung Pay",
+  "pm_paypal": "PayPal",
+  "pm_twint": "Twint",
+  "pm_klarna": "Klarna / Später bezahlen",
+  "pm_gift_card_voucher": "Geschenkkarte / Gutschein",
+  "pm_bank_transfer": "Banküberweisung",
+  "pm_venmo": "Venmo",
+  "pm_cash_app": "Cash App",
+  "pm_other": "Andere",
   "pm_debit": "EC / Maestro / Debitkarte",
   "pm_credit": "Kreditkarte (Visa/Mastercard/Amex)",
-  "pm_twint": "Twint",
-  "pm_paypal": "PayPal",
   "pm_applepay": "Apple Pay",
   "pm_googlepay": "Google Pay",
   "pm_invoice": "Rechnung / Klarna",
   "pm_giftcard": "Geschenkkarte / Gutschein",
   "pm_financing": "Finanzierung / Ratenzahlung",
-  "pm_other": "Andere",
   "snack_saved_prefix": "Gespeichert",
+
+  "setup_hub_title": "Einstellungen & Präferenzen",
+  "setup_hub_subtitle": "Konfiguriere deine App-Einstellungen",
+  "setup_hub_note": "Jeder Bereich kann jederzeit unabhängig angepasst werden.",
+  "setup_hub_card_title": "Einstellungen & Präferenzen",
+  "setup_hub_card_subtitle": "Backup, Benachrichtigungen, Zahlungsarten und Sicherheit konfigurieren",
+  "setup_backup_title": "Backup",
+  "setup_backup_subtitle": "Automatische Backups im sicheren Speicher",
+  "setup_notifications_title": "Benachrichtigungen",
+  "setup_notifications_subtitle": "Erinnerungen für ablaufende Garantien",
+  "setup_payment_methods_title": "Zahlungsarten",
+  "setup_payment_methods_subtitle": "Schnelloptionen zum Hinzufügen von Artikeln",
+  "setup_security_title": "Sicherheit",
+  "setup_security_subtitle": "App-Sperre mit Gerätbiometrie",
 
   "notif_title": "Erinnerungen & Benachrichtigungen",
   "notif_enable": "Erinnerungen aktivieren",
@@ -62,11 +93,47 @@
   "optional": "Optional",
   "not_set": "Nicht gesetzt",
   "field_required": "Pflichtfeld",
+  "category_required": "Bitte wähle eine Kategorie aus",
   "save_failed": "Speichern fehlgeschlagen",
 
   "home_title": "Garantie Safe",
+  "home_subtitle": "Behalte deine Garantien im Blick",
   "home_welcome": "Willkommen!",
   "home_restart_onboarding": "Onboarding neu starten",
+  "home_add_card_title": "Neuen Beleg hinzufügen",
+  "home_add_card_subtitle": "Scanne einen Kassenzettel oder füge manuell hinzu",
+  "home_scan_button": "Scannen",
+  "home_manual_button": "Manuell hinzufügen",
+  "home_items_section_title": "Deine Belege",
+  "home_items_empty": "Noch keine Belege erfasst",
+  "home_items_empty_subtitle": "Füge deinen ersten Beleg hinzu",
+  "home_scan": "Scannen",
+  "home_import": "Importieren",
+  "home_receipts": "Belege",
+  "home_settings": "Einstellungen",
+  "home_status_active_items": "{count} aktive Belege",
+  "@home_status_active_items": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "home_status_expiring_soon": "{count} l\u00e4uft bald ab",
+  "@home_status_expiring_soon": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "home_status_all_good": "Alles im Blick",
+  "import_source_title": "Importieren",
+  "import_source_subtitle": "W\u00e4hle eine Quelle",
+  "import_photo": "Foto",
+  "import_photo_subtitle": "Aus Galerie w\u00e4hlen",
+  "import_pdf": "PDF",
+  "import_pdf_subtitle": "PDF-Dokument ausw\u00e4hlen",
 
   "notifications_title": "Benachrichtigungen",
   "notifications_intro": "Wähle, über welche Ereignisse du informiert werden möchtest",
@@ -77,6 +144,28 @@
   "notifications_summary": "Wöchentliche Übersicht",
   "notifications_summary_sub": "Erhalte eine wöchentliche Zusammenfassung deiner Garantien",
   "notifications_finish": "Einrichtung abschließen",
+  
+  "notif_warranty_expiring_soon_title": "Garantie läuft bald ab",
+  "notif_warranty_expires_today_title": "Garantie läuft heute ab",
+  "notif_warranty_expires_in_days_body": "{itemTitle} läuft in {days} Tagen ab.",
+  "@notif_warranty_expires_in_days_body": {
+    "placeholders": {
+      "itemTitle": {
+        "type": "String"
+      },
+      "days": {
+        "type": "int"
+      }
+    }
+  },
+  "notif_warranty_expires_today_body": "{itemTitle} läuft heute ab.",
+  "@notif_warranty_expires_today_body": {
+    "placeholders": {
+      "itemTitle": {
+        "type": "String"
+      }
+    }
+  },
   "notifications_summary_time_title": "Uhrzeit der Übersicht",
   "notifications_lead_title": "Vorlauf (Tage)",
   "notifications_lead_sub": "Wie viele Tage vorher möchtest du erinnert werden?",
@@ -99,9 +188,21 @@
   "unlock": "Entsperren",
 
   "settings_title": "Einstellungen",
+  "settings_section_preferences": "Einstellungen",
+  "settings_section_backup_security": "Backup & Sicherheit",
+  "settings_section_data_storage": "Daten & Speicher",
+  "settings_section_about": "Über",
+  "settings_section_developer": "Entwickleroptionen",
   "settings_section_general": "Allgemein",
   "settings_section_notifications": "Benachrichtigungen",
   "settings_section_security": "Sicherheit",
+  "settings_appearance": "Erscheinungsbild",
+  "settings_appearance_sub": "Design- und Anzeigeeinstellungen",
+  "settings_payment_methods": "Zahlungsmethoden",
+  "settings_payment_methods_sub": "Gespeicherte Zahlungsmethoden verwalten",
+  "settings_app_lock": "App-Sperre",
+  "settings_app_lock_sub": "Sichern Sie Ihre App mit biometrischer Authentifizierung",
+  "settings_app_version": "App-Version",
   "settings_dark_mode": "Dunkelmodus",
   "settings_dark_mode_sub": "Zwischen hellem und dunklem Design wechseln",
   "settings_language": "Sprache",
@@ -129,8 +230,8 @@
   "items_updated": "Beleg aktualisiert",
   "items_edit_title": "Beleg bearbeiten",
   "items_edit": "Beleg bearbeiten",
-  "items_name": "Titel",
-  "items_name_hint": "z. B. iPhone 15 Pro",
+  "items_name": "Produktname",
+  "items_name_hint": "z.B. Kaffeemaschine, Fernseher, Bohrmaschine",
   "items_merchant_hint": "z. B. MediaMarkt Zug",
   "items_pick_purchase_date": "Kaufdatum wählen",
   "items_pick_expiry_date": "Ablaufdatum wählen",
@@ -138,11 +239,18 @@
   "items_payment_method_hint": "z. B. Kreditkarte, Twint, …",
   "items_category": "Kategorie",
   "items_category_hint": "Bitte auswählen",
+  "attachment_required": "Ein Beleg oder Dokument ist erforderlich.",
 
   "warranty_years": "Garantie (Jahre)",
   "years_suffix": "Jahre",
-  "custom_expiry": "Manueller Eintrag",
-
+  "custom_expiry": "Manueller Eintrag",  "warranty_custom": "Benutzerdefiniert",
+  "warranty_custom_years": "Benutzerdefinierte Garantie (Jahre)",
+  "warranty_custom_dialog_title": "Benutzerdefinierte Garantiedauer eingeben",
+  "warranty_custom_dialog_hint": "Anzahl Jahre (1-10)",
+  "warranty_custom_error_min": "Mindestens 1 Jahr",
+  "warranty_custom_error_max": "Maximal 10 Jahre",
+  "warranty_custom_error_invalid": "Bitte gültige Zahl eingeben",
+  "expiry_date_required": "Bitte Garantiedauer oder Ablaufdatum festlegen",
   "item_notes": "Notizen",
   "item_notes_hint": "Reparaturnummern, Seriennummern, Verkäufer, Hinweise …",
 
@@ -208,13 +316,27 @@
   "cat_other": "Sonstiges",
 
   "filter_all": "Alle",
+  "filter_active": "Aktiv",
   "filter_due_soon": "Läuft bald ab",
   "filter_expired": "Abgelaufen",
   "filter_category_label": "Kategorie",
   "filter_category_all": "Alle Kategorien",
 
   "status_expired": "Abgelaufen",
+  "status_no_warranty": "Keine Garantie",
   "status_today": "Heute",
+  "status_month_left": "1 Monat übrig",
+  "status_months_left": "{months} Monate übrig",
+  "@status_months_left": {"placeholders": {"months": {"type": "int"}}},
+  "status_year_left": "1 Jahr übrig",
+  "status_years_left": "{years} Jahre übrig",
+  "@status_years_left": {"placeholders": {"years": {"type": "int"}}},
+  "status_years_months_left": "{years} Jahre {months} Monate übrig",
+  "@status_years_months_left": {"placeholders": {"years": {"type": "int"}, "months": {"type": "int"}}},
+  "status_expired_recently": "Kürzlich abgelaufen",
+  "status_expired_year_ago": "Vor 1 Jahr abgelaufen",
+  "status_expired_years_ago": "Vor {years} Jahren abgelaufen",
+  "@status_expired_years_ago": {"placeholders": {"years": {"type": "int"}}},
 
   "status_in_day": "In 1 Tag",
   "status_in_days": "In {days} Tagen",
@@ -239,11 +361,45 @@
 
   "filter_soon": "Bald fällig",
 
+  "status_expires_today": "Läuft heute ab",
+  "status_expiring_in_days": "Läuft in {days} Tagen ab",
+  "status_expiring_in_day": "Läuft in 1 Tag ab",
+  "status_expired_days_ago": "Vor {days} Tagen abgelaufen",
+  "status_expired_day_ago": "Vor 1 Tag abgelaufen",
+
+  "use_warranty_duration": "Garantiedauer verwenden",
+  "no_receipt_warning": "Kein Beleg angehängt",
+  "no_receipt_indicator": "Kein Beleg",
+
   "merchant_label": "Händler",
   "category_label": "Kategorie",
   "purchase_date_label": "Kaufdatum",
   "expiry_date_label": "Ablaufdatum",
   "payment_method_label": "Zahlungsart",
+  "payment_methods_title": "Zahlungsarten",
+  "payment_methods_subtitle": "Verwalte deine Zahlungsarten",
+  "payment_methods_add": "Zahlungsart hinzufügen",
+  "payment_methods_add_dialog_title": "Neue Zahlungsart",
+  "payment_methods_add_dialog_hint": "Name eingeben",
+  "payment_methods_add_dialog_save": "Hinzufügen",
+  "payment_methods_edit_dialog_title": "Zahlungsart bearbeiten",
+  "payment_methods_edit_dialog_save": "Speichern",
+  "payment_methods_delete_confirm_title": "Zahlungsart löschen?",
+  "payment_methods_delete_confirm_message": "Dies kann nicht rückgängig gemacht werden.",
+  "payment_methods_delete_confirm_ok": "Löschen",
+  "payment_methods_cannot_delete_message": "Diese Methode wird von {count} Artikeln verwendet. Sie wurde stattdessen archiviert.",
+  "payment_methods_archived": "Archiviert",
+  "payment_methods_disabled": "Deaktiviert",
+  "payment_methods_enabled": "Aktiviert",
+  "payment_methods_archived_edit_hint": "Aktuell ausgewählt (archiviert)",
+  "payment_methods_custom": "Benutzerdefiniert",
+  "payment_methods_builtin": "Standard",
+  "payment_methods_empty": "Keine Zahlungsarten konfiguriert",
+  "payment_methods_section_enabled": "Aktive Methoden",
+  "payment_methods_section_disabled": "Deaktivierte Methoden",
+  "payment_methods_section_archived": "Archivierte Methoden",
+  "payment_methods_empty_notice": "Keine Zahlungsarten konfiguriert. Bitte zuerst einrichten.",
+  "payment_methods_configure": "Zahlungsarten konfigurieren",
 
   "empty_all_title": "Keine Einträge",
   "empty_all_hint": "Du hast noch keine Belege erfasst.",
@@ -255,6 +411,577 @@
   "error_generic_title": "Ein Fehler ist aufgetreten",
   "retry": "Erneut versuchen",
 
-  "more": "Mehr"
+  "more": "Mehr",
 
+  "backup_title": "Sicherung & Wiederherstellung",
+  "backup_now": "Jetzt sichern",
+  "backup_restore": "Aus Sicherung wiederherstellen",
+  "backup_auto": "Automatische Sicherung",
+  "backup_frequency": "Sicherungshäufigkeit",
+  "backup_weekly": "Wöchentlich",
+  "backup_monthly": "Monatlich",
+  "backup_location": "Sicherungsort",
+  "backup_location_not_set": "Nicht ausgewählt",
+  "backup_location_required": "Sicherungsort ist erforderlich",
+  "backup_last_backup": "Letzte Sicherung",
+  "backup_never": "Nie",
+  "backup_time_just_now": "Gerade eben",
+  "backup_time_minutes_ago": "Vor {minutes} Minuten",
+  "@backup_time_minutes_ago": {
+    "placeholders": {
+      "minutes": {
+        "type": "int"
+      }
+    }
+  },
+  "backup_time_hours_ago": "Vor {hours} Stunden",
+  "@backup_time_hours_ago": {
+    "placeholders": {
+      "hours": {
+        "type": "int"
+      }
+    }
+  },
+  "backup_time_days_ago": "Vor {days} Tagen",
+  "@backup_time_days_ago": {
+    "placeholders": {
+      "days": {
+        "type": "int"
+      }
+    }
+  },
+  "backup_in_progress": "Erstelle Sicherung...",
+  "backup_success": "Sicherung erfolgreich erstellt",
+  "backup_failed": "Sicherung fehlgeschlagen",
+  "backup_restore_confirm_title": "Sicherung wiederherstellen?",
+  "backup_restore_confirm": "Dies überschreibt alle aktuellen Daten. Fortfahren?",
+  "backup_restoring": "Stelle Sicherung wieder her...",
+  "backup_restore_success": "Sicherung erfolgreich wiederhergestellt. Bitte App neu starten.",
+  "backup_restore_failed": "Wiederherstellung fehlgeschlagen",
+  "backup_select_location": "Sicherungsordner auswählen",
+  "backup_select_file": "Sicherungsdatei auswählen",
+  "backup_save_dialog_title": "Sicherung speichern",
+  "backup_required_title": "Sicherung erforderlich",
+  "backup_required_body": "Sicherung ist erforderlich, um Ihre Belege und Anhänge zu schützen. Bitte wählen Sie einen Sicherungsort aus.",
+  "backup_no_server_info": "Wir haben KEINE Server. Ihre Daten werden nur auf Ihrem Gerät und am von Ihnen gewählten Sicherungsort gespeichert.",
+  "backup_share": "Sicherungsdatei teilen",
+  "backupExportReminderTitle": "Export-Erinnerung",
+  "backupExportReminderMessage": "Erwägen Sie, ein Backup zu exportieren, um eine sichere Kopie außerhalb der App zu behalten.",
+  "backupExportButton": "Exportieren",
+
+  "trash_title": "Papierkorb",
+  "trash_empty": "Papierkorb ist leer",
+  "trash_deleted_on": "Gelöscht am",
+  "trash_restore": "Wiederherstellen",
+  "trash_delete_permanently": "Endgültig löschen",
+  "trash_restore_confirm_title": "Element wiederherstellen?",
+  "trash_restore_confirm": "Das Element wird in Ihrer Garantieliste wiederhergestellt.",
+  "trash_delete_confirm_title": "Endgültig löschen?",
+  "trash_delete_confirm": "Das Element und alle Anhänge werden unwiderruflich gelöscht. Dies kann nicht rückgängig gemacht werden!",
+  "trash_restored": "Element wiederhergestellt",
+  "trash_deleted": "Element endgültig gelöscht",
+  "trash_purge_old": "Automatische Bereinigung: {count} alte Elemente entfernt",
+
+  "scan_choose_source": "Quelle wählen",
+  "scan_choose_source_sub": "Wähle aus, wie du deinen Beleg hinzufügen möchtest:",
+  "scan_take_photo": "Foto aufnehmen",
+  "scan_take_photo_sub": "Kamera verwenden, um Beleg zu fotografieren",
+  "scan_upload_receipt": "Beleg hochladen",
+  "scan_upload_receipt_sub": "Aus Dateien, Downloads, Drive usw. auswählen",
+  "scan_how_it_works": "So funktioniert's",
+  "scan_how_it_works_steps": "1. Foto aufnehmen oder Datei auswählen (Bild/PDF)\n2. Text wird automatisch extrahiert\n3. Erkannte Details überprüfen und bearbeiten\n4. Garantie speichern",
+  "scan_extracting_text": "Text wird extrahiert...",
+  "scan_extracting_wait": "Dies kann einige Momente dauern",
+  "scan_file_access_error": "Auf die ausgewählte Datei konnte nicht zugegriffen werden",
+  "scan_unsupported_file_type": "Nicht unterstützter Dateityp: {extension}",
+  "@scan_unsupported_file_type": {
+    "placeholders": {
+      "extension": {
+        "type": "String"
+      }
+    }
+  },
+  "scan_ocr_failed": "Wir konnten diesen Beleg nicht klar lesen. Bitte gib die Details manuell ein.",
+
+  "scan_review_title": "Beleg gescannt",
+  "scan_review_subtitle": "Bitte überprüfe die erkannten Details vor dem Speichern:",
+  "scan_review_merchant": "Händler",
+  "scan_review_purchase_date": "Kaufdatum",
+  "scan_review_attachment": "Anhang",
+  "scan_review_files_attached": "{count} Datei(en) angehängt",
+  "@scan_review_files_attached": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "scan_review_attached": "Angehängt",
+  "scan_attachment_failed_title": "Beleg angehängt",
+  "scan_attachment_failed_message": "Wir konnten diesen Beleg nicht klar lesen. Die Datei wurde angehängt, aber bitte gib die Details manuell ein.",
+  "scan_success": "Beleg erfolgreich gescannt und angehängt",
+
+  "multi_item_choice_title": "Wie viele Artikel?",
+  "multi_item_choice_subtitle": "Ein Beleg kann für mehrere Garantieartikel verwendet werden",
+  "multi_item_create_one": "Einen Artikel erstellen",
+  "multi_item_create_multiple": "Mehrere Artikel erstellen",
+
+  "multi_item_screen_title": "Mehrere Artikel erstellen",
+  "multi_item_shared_section": "Gemeinsame Belegdaten",
+  "multi_item_shared_info": "Händler, Kaufdatum und Beleg werden für alle Artikel wiederverwendet. Nur produktspezifische Details müssen eingegeben werden.",
+  "multi_item_items_section": "Garantieartikel",
+  "multi_item_item_number": "Artikel {number}",
+  "@multi_item_item_number": {
+    "placeholders": {
+      "number": {
+        "type": "int"
+      }
+    }
+  },
+  "multi_item_add_another": "Weiteren Artikel hinzufügen",
+  "multi_item_create_button": "{count} {count, plural, =1{Artikel erstellen} other{Artikel erstellen}}",
+  "@multi_item_create_button": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "multi_item_validation_error": "Bitte fülle alle Pflichtfelder für jeden Artikel aus",
+  "multi_item_success": "{count} Artikel erfolgreich erstellt",
+  "@multi_item_success": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "multi_item_add_from_receipt": "Weiteres Produkt von diesem Beleg hinzufügen",
+  "multi_item_add_from_receipt_subtitle": "Händler und Kaufdatum wiederverwenden",
+
+  "add_entry_title": "Hinzufügen",
+  "add_upload_image_pdf": "Bild oder PDF hochladen",
+  "add_manually": "Manuell hinzufügen",
+  "scan_button": "Scannen",
+  "scan_button_camera": "Mit Kamera scannen",
+
+  "snapshot_section_recommended": "Empfohlen",
+  "snapshot_section_recent": "Aktuelle Backups",
+  "snapshot_section_daily": "Tägliche Backups",
+  "snapshot_section_weekly": "Wöchentliche Backups",
+  "snapshot_section_monthly": "Monatliche Backups",
+  "snapshot_current_state": "Aktueller Stand",
+  "snapshot_empty_label": "Leer",
+
+  "premium_upgrade_title": "Auf Premium upgraden",
+  "premium_limit_reached": "Sie haben das kostenlose Limit erreicht",
+  "premium_free_limit_info": "Die kostenlose Version erlaubt bis zu {count} aktive Artikel.",
+  "@premium_free_limit_info": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "premium_unlock_title": "Premium Lifetime-Freischaltung",
+  "premium_feature_unlimited": "Unbegrenzte Artikel",
+  "premium_feature_lifetime": "Einmalzahlung, für immer Ihnen",
+  "premium_feature_no_subscription": "Keine Abonnements oder wiederkehrende Gebühren",
+  "premium_feature_offline": "Funktioniert komplett offline",
+  "premium_price": "Nur {price}",
+  "@premium_price": {
+    "placeholders": {
+      "price": {
+        "type": "String"
+      }
+    }
+  },
+  "premium_upgrade": "Upgraden",
+  "premium_restore": "Kauf wiederherstellen",
+  "premium_not_now": "Jetzt nicht",
+  "premium_purchase_initiated": "Kauf wird eingeleitet...",
+  "premium_purchase_failed": "Kauf fehlgeschlagen. Bitte versuchen Sie es erneut.",
+  "premium_purchase_error": "Kauffehler",
+  "premium_restored": "Premium erfolgreich wiederhergestellt!",
+  "premium_no_purchase_found": "Kein vorheriger Kauf gefunden",
+  "premium_restore_error": "Wiederherstellungsfehler",
+  "premium_status_free": "Kostenlos ({current}/{max} Artikel)",
+  "@premium_status_free": {
+    "placeholders": {
+      "current": {
+        "type": "int"
+      },
+      "max": {
+        "type": "int"
+      }
+    }
+  },
+  "premium_status_premium": "Premium (Unbegrenzt)",
+  "premium_card_title": "Premium-Status",
+  "premium_card_subtitle_free": "Sie nutzen die kostenlose Version",
+  "premium_card_subtitle_premium": "Sie haben Premium-Zugang",
+  "premium_buy_lifetime": "Lifetime-Freischaltung kaufen",
+  "premium_unlocked_via": "Freigeschaltet über {source}",
+  "@premium_unlocked_via": {
+    "placeholders": {
+      "source": {
+        "type": "String"
+      }
+    }
+  },
+
+  "error": "Fehler",
+  "error_with_details": "Fehler: {details}",
+  "@error_with_details": {
+    "placeholders": {
+      "details": {
+        "type": "String"
+      }
+    }
+  },
+  "ok": "OK",
+  "enable": "Aktivieren",
+  "disable": "Deaktivieren",
+  "continue_button": "Weiter",
+  "deleted": "Gelöscht",
+  "restore_button": "Wiederherstellen",
+
+  "backup_snapshot_failed": "Snapshot fehlgeschlagen: {error}",
+  "@backup_snapshot_failed": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "backup_select_valid_file": "Bitte wähle eine gültige Backup-Datei aus (.gsbackup)",
+  "backup_restore_completed": "Wiederherstellung abgeschlossen",
+  "backup_restore_failed_details": "Wiederherstellung fehlgeschlagen: {error}",
+  "@backup_restore_failed_details": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "backup_exported_successfully": "Backup erfolgreich exportiert",
+  "backupExportFailed": "Export fehlgeschlagen: {error}",
+  "@backupExportFailed": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "backup_cloud_exported": "Backup erfolgreich in Cloud exportiert",
+  "backup_cloud_export_failed": "Cloud-Export fehlgeschlagen: {error}",
+  "@backup_cloud_export_failed": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "backup_disable_cloud_title": "Cloud-Backup deaktivieren?",
+  "backup_disable_cloud_message": "Cloud-Backup wird nicht mehr automatisch erstellt. Du kannst Backups weiterhin manuell exportieren.",
+  "backup_cloud_title": "Cloud-Backup",
+  "backup_cloud_message": "Wenn Cloud-Backup aktiviert ist, wird bei jedem Backup zusätzlich eine Exportdatei erstellt, die du in deinem Cloud-Speicher (Google Drive, iCloud Drive, etc.) speichern kannst.\n\nTippe auf \"In Cloud exportieren\", um das Backup an deinem bevorzugten Ort zu speichern.",
+  "backup_device_settings_info": "Bitte öffne die Einstellungen-App deines Geräts und navigiere zu den Backup-Einstellungen.\n\nAndroid: Einstellungen > System > Sicherung\niOS: Einstellungen > [Dein Name] > iCloud > iCloud-Backup",
+  "backup_time_just_now": "Gerade eben",
+  "backup_time_min_ago": "Vor {minutes} Min.",
+  "@backup_time_min_ago": {
+    "placeholders": {
+      "minutes": {
+        "type": "int"
+      }
+    }
+  },
+  "backup_time_hours_ago": "Vor {hours} Stunden",
+  "@backup_time_hours_ago": {
+    "placeholders": {
+      "hours": {
+        "type": "int"
+      }
+    }
+  },
+  "backup_snapshot_count_none": "Keine",
+  "backup_snapshot_count_daily": "{count} täglich",
+  "@backup_snapshot_count_daily": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "backup_snapshot_count_weekly": "{count} wöchentlich",
+  "@backup_snapshot_count_weekly": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "backup_snapshot_count_monthly": "{count} monatlich",
+  "@backup_snapshot_count_monthly": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "backup_snapshot_count_total": "{total} verfügbar",
+  "@backup_snapshot_count_total": {
+    "placeholders": {
+      "total": {
+        "type": "int"
+      }
+    }
+  },
+  "backup_status_header": "Backup-Status",
+  "backup_last_backup_label": "Letztes erfolgreiches Backup:",
+  "backup_snapshots_available_label": "Verfügbare Snapshots:",
+  "backup_next_scheduled_label": "Nächstes geplantes Backup:",
+  "backup_status_label": "Status:",
+  "backup_status_up_to_date": "Aktuell",
+  "backup_last_error": "Letzter Fehler: {error}",
+  "@backup_last_error": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "backup_cloud_outdated_title": "Cloud-Backup veraltet",
+  "backup_cloud_outdated_message": "Dein letztes internes Backup ist aktueller als dein letzter Cloud-Export. Erwäge einen erneuten Cloud-Export für vollständigen Schutz.",
+  "backup_export_to_cloud_now": "Jetzt in Cloud exportieren",
+  "backup_internal_protection_title": "Interner Backup-Schutz",
+  "backup_internal_protection_message": "Interne Backups schützen vor versehentlichen Änderungen in der App. Mehrere Snapshots (täglich, wöchentlich, monatlich) werden zur Wiederherstellung aufbewahrt. Sicher im App-privaten Speicher gespeichert.",
+  "backup_device_protection_title": "Geräte-Backup-Schutz",
+  "backup_device_protection_message": "Deine Daten sind im Geräte-Backup enthalten (Google Backup auf Android, iCloud auf iOS). Dies schützt vor Geräteverlust, Deinstallation und beim Wechsel zu einem neuen Telefon. Daten werden beim Einrichten eines neuen Geräts automatisch wiederhergestellt.",
+  "backup_external_protection_title": "Externes Backup (Optional)",
+  "backup_external_protection_message": "Für zusätzliche Sicherheit exportiere Backup-Dateien manuell und speichere sie in Cloud-Speicher (Google Drive, iCloud Drive, Dropbox, etc.) oder auf externen Geräten. Empfohlen für kritische Daten.",
+  "backup_create_update_now": "Backup sofort erstellen/aktualisieren",
+  "backup_export_to_cloud_storage": "Backup-Datei in Cloud-Speicher, E-Mail oder externes Gerät exportieren",
+  "backup_export_tip": "Tipp: Speichere exportierte Backups in Google Drive, iCloud Drive oder Dropbox für maximalen Schutz.",
+  "backup_cloud_section_header": "Cloud-Backup",
+  "backup_auto_export_prompt": "Automatisch zum Exportieren von Backups in deinen Cloud-Speicher auffordern",
+  "backup_cloud_export_status": "Cloud-Export-Status",
+  "backup_last_cloud_export": "Letzter Cloud-Export:",
+  "backup_export_to_cloud_button": "In Cloud exportieren",
+  "backup_export_to_cloud_help": "Backup in Google Drive, iCloud Drive oder einem anderen Cloud-Dienst speichern",
+  "backup_device_section_header": "Geräte-Backup",
+  "backup_device_may_protect": "Dein Telefon kann auch App-Daten schützen",
+  "backup_device_protection_info": "Dein Geräte-Backup (iCloud auf iOS, Google Backup auf Android) kann App-Daten enthalten. Dies bietet zusätzlichen Schutz beim Einrichten eines neuen Geräts.",
+  "backup_open_device_settings": "Geräte-Backup-Einstellungen öffnen",
+  "backup_restore_section_header": "Wiederherstellen",
+  "backup_restore_from_backup": "Aus Backup wiederherstellen",
+  "backup_restore_from_storage": "Aus dem Backup im App-Speicher wiederherstellen",
+  "backup_no_internal_backup": "Kein internes Backup verfügbar",
+  "backup_restore_from_file": "Aus Datei wiederherstellen",
+  "backup_restore_from_file_help": "Backup-Datei von deinem Gerät oder Cloud-Speicher auswählen",
+  "backup_health_protected": "Geschützt",
+  "backup_health_partial": "Teilweiser Schutz",
+  "backup_health_full_message": "Deine Daten sind vollständig durch interne Snapshots und Geräte-Backup geschützt",
+  "backup_health_partial_message": "Interne Backups sind aktiv, aber Cloud-Export wird für maximalen Schutz empfohlen",
+  
+  "backupStatusSafe": "Deine Daten sind sicher",
+  "backupStatusNeedsBackup": "Backup empfohlen",
+  "backupLastBackupLabel": "Letztes Backup",
+  "backupActionsTitle": "Backup-Aktionen",
+  "backupCloudTitle": "Cloud-Backup",
+  "backupCloudDescription": "Backups automatisch in deinem Cloud-Speicher sichern",
+  "backupRestoreTitle": "Wiederherstellen",
+  "backupCloudSetup": "Cloud-Backup einrichten",
+  "backupCloudSetupDescription": "Wähle einen Ordner, in dem Backups automatisch gespeichert werden",
+  "backupCloudConfigured": "Cloud-Backup aktiv",
+  "backupCloudFolderLabel": "Backup-Ordner",
+  "backupCloudLastBackup": "Letztes Cloud-Backup",
+  "backupCloudChangeFolder": "Ordner ändern",
+  "backupCloudDisable": "Cloud-Backup deaktivieren",
+  "backupCloudSetupError": "Cloud-Backup konnte nicht eingerichtet werden",
+  "backupCloudAccessError": "Zugriff auf Ordner nicht möglich. Bitte wähle einen anderen Ordner.",
+  "backupCloudBackupNow": "Jetzt in Cloud sichern",
+  "backupCloudBackupSuccess": "Backup im Cloud-Ordner gespeichert",
+  "backupCloudBackupFailed": "Cloud-Backup fehlgeschlagen",
+  "backupCloudDisableConfirm": "Automatisches Cloud-Backup deaktivieren? Deine vorhandenen Backup-Dateien werden nicht gelöscht.",
+  "backupCloudAutomatic": "Automatisches Cloud-Backup",
+  
+  "backup_setup_title": "Backup-Einrichtung",
+  "backup_choose_title": "Backup auswählen",
+  "backup_no_backups_title": "Keine Backups verfügbar",
+  "backup_no_backups_subtitle": "Backups werden automatisch erstellt",
+  "backup_restore_title": "Backup wiederherstellen",
+  "backup_restored_count": "{count} Garantien erfolgreich wiederhergestellt",
+  "@backup_restored_count": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "backup_restore_success_message": "Deine Daten wurden erfolgreich wiederhergestellt.",
+  "backup_restored_items": "Wiederhergestellt: {count} Garantien",
+  "@backup_restored_items": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "backup_restoring": "Backup wird wiederhergestellt...",
+  "backup_restoring_wait": "Dies kann einige Momente dauern",
+  "backup_contents_header": "Backup-Inhalt",
+  "backup_info_warranties": "Garantien",
+  "backup_info_attachments": "Anhänge",
+  "backup_info_size": "Größe",
+  "backup_info_app_version": "App-Version",
+  "backup_info_backup_type": "Backup-Typ",
+  "backup_type_automatic": "Automatisches Backup",
+  "backup_type_manual": "Manuelles Backup",
+  "backup_legacy_format": "Legacy-Backup-Format - Artikelanzahl nicht verfügbar",
+  "backup_warning_header": "Warnung",
+  "backup_before_restore_header": "Vor der Wiederherstellung",
+  "backup_restore_warning": "Die Wiederherstellung dieses Backups ersetzt alle aktuellen Daten. Alle Artikel, Anhänge oder Einstellungen, die nach der Erstellung dieses Backups hinzugefügt wurden, gehen verloren. Diese Aktion kann nicht rückgängig gemacht werden.",
+  "backup_restore_this_backup": "Dieses Backup wiederherstellen",
+  "backup_badge_recommended": "Empfohlen",
+  "backup_badge_empty": "Leer",
+
+  "settings_debug_premium_override": "Debug Premium Override",
+  "settings_debug_no_override": "Kein Override (echter Status)",
+  "settings_debug_forced_premium": "Erzwungen: Premium",
+  "settings_debug_forced_free": "Erzwungen: Kostenlos",
+  "settings_force_free": "Kostenlos erzwingen",
+  "settings_real_state": "Echter Status",
+  "settings_force_premium": "Premium erzwingen",
+  "language_name_de": "Deutsch",
+  "language_name_en": "English",
+
+  "security_no_device_lock": "Bitte richte zuerst eine PIN, ein Passwort oder die biometrische Sperre auf deinem Gerät ein.",
+  "security_lock_enabled": "App-Sperre aktiviert - du musst dich beim Öffnen authentifizieren",
+  "security_lock_disabled": "App-Sperre deaktiviert",
+  "security_screen_title": "Sicherheit",
+  "security_protect_with_lock": "App mit Gerätesperre schützen",
+  "security_requires_biometric": "Erfordert Biometrie oder PIN zum Öffnen der App",
+  "security_no_lock_configured": "Gerät hat keine sichere Sperre konfiguriert",
+  "security_enable_lock_info": "Um die App-Sperre zu verwenden, aktiviere bitte eine PIN, ein Passwort oder die biometrische Sperre in deinen Geräteeinstellungen.",
+
+  "notifications_screen_title": "Benachrichtigungen",
+  "notifications_enabled": "Benachrichtigungen aktiviert",
+  "notifications_disabled": "Benachrichtigungen deaktiviert",
+  "notifications_local_info": "Benachrichtigungen werden lokal auf deinem Gerät geplant und funktionieren auch, wenn die App geschlossen ist.",
+  "notifications_enable_reminders": "Garantie-Erinnerungen aktivieren",
+  "notifications_remind_before_expiry": "Benachrichtigung erhalten, bevor Garantien ablaufen",
+  "notifications_reminder_schedule": "Erinnerungsplan (alle um 09:00)",
+  "notifications_30_days_before": "30 Tage vor Ablauf",
+  "notifications_7_days_before": "7 Tage vor Ablauf",
+  "notifications_on_expiry_day": "Am Ablaufdatum",
+  "notifications_system_permissions_note": "Hinweis: Systembenachrichtigungsberechtigungen müssen in deinen Geräteeinstellungen aktiviert sein, damit Benachrichtigungen angezeigt werden.",
+
+  "trash_restore_all_title": "Alle aus Papierkorb wiederherstellen",
+  "trash_restore_all_message": "Alle {count} Element(e) aus dem Papierkorb wiederherstellen?",
+  "@trash_restore_all_message": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "trash_restored_count": "{count} Element(e) aus Papierkorb wiederhergestellt",
+  "@trash_restored_count": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "trash_empty_title": "Papierkorb leeren",
+  "trash_empty_message": "Alle {count} Element(e) endgültig aus dem Papierkorb löschen?\n\nDiese Aktion kann nicht rückgängig gemacht werden.",
+  "@trash_empty_message": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "trash_empty_button": "Papierkorb leeren",
+  "trash_deleted_count": "{count} Element(e) endgültig gelöscht",
+  "@trash_deleted_count": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "trash_restore_all": "Alle wiederherstellen",
+  "trash_error_display": "Fehler: {error}",
+  "@trash_error_display": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "trash_items_kept_info": "Gelöschte Elemente werden 180 Tage aufbewahrt",
+  "trash_auto_delete_info": "Elemente werden 180 Tage aufbewahrt, bevor sie automatisch gelöscht werden",
+
+  "payments_error_loading": "Fehler beim Laden der Zahlungsarten: {error}",
+  "@payments_error_loading": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+
+  "item_could_not_open_file": "Datei konnte nicht geöffnet werden: {error}",
+  "@item_could_not_open_file": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+
+  "onboarding_restore_from_backup": "Aus Backup wiederherstellen",
+  "onboarding_restore_from_file": "Aus Datei wiederherstellen",
+
+  "safety_no_warranties_found": "Keine Garantien gefunden",  "warrantiesExpiringSoonTitle": "Bald ablaufend",
+  "warrantiesViewAll": "Alle anzeigen",  "backup_restore_warning_empty": "Dieses Backup enthält 0 Garantien. Die Wiederherstellung löscht alle deine aktuellen Garantien. Bist du sicher, dass du dieses leere Backup wiederherstellen möchtest?",
+  "backup_restore_warning_replace": "Dein aktueller App-Inhalt wird durch dieses Backup ersetzt. Dies kann nicht rückgängig gemacht werden.",
+
+  "receipt_validation_warning_title": "Dieses Dokument ist möglicherweise schwer zu lesen",
+  "receipt_validation_warning_message": "Bitte prüfe, ob alles gut lesbar ist.\nBeleg kann bei einem Garantiefall ansonsten abgelehnt werden."
+  "receipt_validation_detected_info": "Erkannte Informationen:",
+  "receipt_validation_words": "Wörter",
+  "receipt_validation_lines": "Zeilen",
+  "receipt_validation_retake_photo": "Foto erneut aufnehmen",
+  "receipt_validation_choose_another": "Andere Datei wählen",
+  "receipt_validation_use_anyway": "Trotzdem verwenden",
+
+  "receipt_validation_warning_insufficient_text": "Dieser Beleg hat nur begrenzt lesbaren Text. Die Fotoqualität könnte für Garantieansprüche bei manchen Geschäften nicht ausreichend sein.",
+  "receipt_validation_warning_missing_date": "Das Kaufdatum konnte nicht automatisch erkannt werden. Stelle sicher, dass das Datum auf dem Foto klar sichtbar ist.",
+  "receipt_validation_warning_missing_merchant": "Der Händler-/Geschäftsname konnte nicht erkannt werden. Stelle sicher, dass der Geschäftsname auf dem Foto sichtbar ist.",
+  "receipt_validation_warning_poor_quality": "Die Belegstruktur scheint unvollständig zu sein. Stelle sicher, dass der gesamte Beleg sichtbar und scharf ist.",
+  "receipt_validation_warning_too_small": "Der Beleg erscheint klein oder weit entfernt im Foto. Es könnte für ein Geschäft schwierig sein, ihn zu lesen. Versuche, ein näheres Foto zu machen.",
+  "receipt_validation_warning_blurry": "Das Foto erscheint leicht unscharf. Überprüfe, ob der Text klar lesbar ist, bevor du fortfährst.",
+  "receipt_validation_warning_few_lines": "Nur wenige Textzeilen wurden erkannt. Der Beleg könnte unvollständig oder teilweise abgeschnitten sein.",
+  "receipt_validation_warning_general": "Die Belegqualität ist möglicherweise nicht optimal für Garantiezwecke. Bitte überprüfe das Foto sorgfältig.",
+
+  "receipt_validation_reject_title": "Dokument nicht lesbar",
+  "receipt_validation_reject_message": "Dieses Bild enthält keinen lesbaren Text. Bitte nehmen Sie ein klareres Foto auf.",
+  "receipt_validation_reject_reason": "Erkanntes Problem:",
+  "receipt_validation_reject_critically_insufficient": "Fast kein Text konnte erkannt werden. Der Beleg ist zu unscharf, zu dunkel oder abgeschnitten.",
+  "receipt_validation_reject_too_small": "Der Beleg ist zu klein oder zu weit entfernt im Foto. Bitte mache ein näheres Foto, bei dem der Beleg den größten Teil des Bildes ausfüllt.",
+  "receipt_validation_reject_blurry": "Das Foto ist zu unscharf zum Lesen. Halte die Kamera ruhig und stelle sicher, dass der Beleg scharf ist, bevor du das Foto aufnimmst.",
+  "receipt_validation_reject_few_lines": "Zu wenige Zeilen erkannt - der Beleg erscheint unvollständig. Stelle sicher, dass der gesamte Beleg auf dem Foto sichtbar ist.",
+  "receipt_validation_reject_general": "Die Belegqualität ist zu schlecht, um für Garantieansprüche nützlich zu sein.",
+
+  "receipt_validation_tips_title": "Tipps für bessere Belegfotos:",
+  "receipt_validation_tip_lighting": "Sorge für gute Beleuchtung ohne Blendung oder Schatten",
+  "receipt_validation_tip_focus": "Halte die Kamera ruhig und warte, bis der Beleg scharf ist",
+  "receipt_validation_tip_flat": "Lege den Beleg auf eine ebene Fläche",
+  "receipt_validation_tip_complete": "Fotografiere den gesamten Beleg von oben bis unten",
+  "backup_recommended_contents": "✓ Dieses Backup wird aufgrund seines Inhalts empfohlen.",
+  "trash_restore_from_trash": "Aus Papierkorb wiederherstellen",
+  "backup_restore_backup_button": "Backup wiederherstellen"
 }

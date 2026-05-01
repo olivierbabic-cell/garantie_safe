@@ -25,6 +25,12 @@ class Item {
   // Notes
   final String? notes;
 
+  // OCR metadata (internal, not shown to user)
+  final String? ocrRawText;
+
+  // Soft delete
+  final int? deletedAt;
+
   // Meta
   final int createdAt;
   final int updatedAt;
@@ -40,6 +46,8 @@ class Item {
     this.categoryCode,
     this.paymentMethodCode,
     this.notes,
+    this.ocrRawText,
+    this.deletedAt,
     required this.createdAt,
     required this.updatedAt,
   });
@@ -55,6 +63,8 @@ class Item {
     String? categoryCode,
     String? paymentMethodCode,
     String? notes,
+    String? ocrRawText,
+    int? deletedAt,
     int? createdAt,
     int? updatedAt,
   }) {
@@ -69,6 +79,8 @@ class Item {
       categoryCode: categoryCode ?? this.categoryCode,
       paymentMethodCode: paymentMethodCode ?? this.paymentMethodCode,
       notes: notes ?? this.notes,
+      ocrRawText: ocrRawText ?? this.ocrRawText,
+      deletedAt: deletedAt ?? this.deletedAt,
       createdAt: createdAt ?? this.createdAt,
       updatedAt: updatedAt ?? this.updatedAt,
     );
@@ -84,6 +96,8 @@ class Item {
         'warranty_years': warrantyYears,
         'payment_method_code': paymentMethodCode,
         'notes': notes,
+        'ocr_raw_text': ocrRawText,
+        'deleted_at': deletedAt,
         'created_at': createdAt,
         'updated_at': updatedAt,
       };
@@ -100,6 +114,8 @@ class Item {
       categoryCode: map['category_code'] as String?,
       paymentMethodCode: map['payment_method_code'] as String?,
       notes: map['notes'] as String?,
+      ocrRawText: map['ocr_raw_text'] as String?,
+      deletedAt: map['deleted_at'] as int?,
       createdAt: (map['created_at'] as int?) ?? 0,
       updatedAt: (map['updated_at'] as int?) ?? 0,
     );

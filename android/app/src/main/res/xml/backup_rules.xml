@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Android Backup Rules for Garantie Safe
+  
+  Ensures critical app data is included in Android Auto Backup:
+  - SQLite database (garantie_safe.db)
+  - Attachments folder (receipt images, documents)
+  - Backup snapshots (current, prev, daily/weekly/monthly)
+  - Shared preferences (user settings)
+  
+  These files will be restored when user:
+  - Sets up new device with Google account
+  - Factory resets and restores
+  - Migrates to new phone
+-->
+<full-backup-content>
+    <!-- Include database -->
+    <include domain="database" path="garantie_safe.db"/>
+    <include domain="database" path="garantie_safe.db-shm"/>
+    <include domain="database" path="garantie_safe.db-wal"/>
+    
+    <!-- Include all files in app documents directory -->
+    <!-- This includes: attachments/, backups/, snapshots/ -->
+    <include domain="file" path="."/>
+    
+    <!-- Include shared preferences (settings) -->
+    <include domain="sharedpref" path="."/>
+    
+    <!-- Exclude cache and temp files -->
+    <exclude domain="file" path="cache"/>
+    <exclude domain="file" path="tmp"/>
+    <exclude domain="cache" path="."/>
+</full-backup-content>

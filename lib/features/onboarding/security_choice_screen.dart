@@ -3,8 +3,7 @@ import 'package:local_auth/local_auth.dart';
 import 'package:garantie_safe/l10n/app_localizations.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import '../notifications/notification_settings_screen.dart';
-import 'set_pin_screen.dart';
+import '../settings/notifications_settings_screen.dart';
 
 class SecurityChoiceScreen extends StatefulWidget {
   const SecurityChoiceScreen({super.key});
@@ -29,26 +28,21 @@ class _SecurityChoiceScreenState extends State<SecurityChoiceScreen> {
     setState(() => _canCheckBiometrics = can);
   }
 
-  Future<void> _saveChoiceAndNext(String type, {String? pin}) async {
+  Future<void> _saveChoiceAndNext(String type) async {
     final sp = await SharedPreferences.getInstance();
     await sp.setString('security_type', type);
-    if (pin != null) await sp.setString('security_pin', pin);
 
     if (!mounted) return;
     Navigator.of(context).push(
-      MaterialPageRoute(builder: (_) => const NotificationSettingsScreen()),
-    );
-  }
-
-  Future<void> _setPinProtection() async {
-    final pin = await Navigator.of(context).push<String>(
-      MaterialPageRoute(builder: (_) => const SetPinScreen()),
-    );
-    if (pin == null) return;
-    await _saveChoiceAndNext('pin', pin: pin);
-    if (!mounted) return;
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(content: Text(AppLocalizations.of(context)!.pin_saved)),
+      MaterialPageRoute(
+        builder: (_) => NotificationsSettingsScreen(
+          isOnboarding: true,
+          onComplete: () {
+            if (!mounted) return;
+            Navigator.of(context).pushNamedAndRemoveUntil('/home', (route) => false);
+          },
+        ),
+      ),
     );
   }
 
@@ -93,12 +87,6 @@ class _SecurityChoiceScreenState extends State<SecurityChoiceScreen> {
           children: [
             Text(t.security_question, style: const TextStyle(fontSize: 18)),
             const SizedBox(height: 24),
-            ElevatedButton.icon(
-              icon: const Icon(Icons.lock),
-              label: Text(t.security_pin),
-              onPressed: _setPinProtection,
-            ),
-            const SizedBox(height: 12),
             ElevatedButton.icon(
               icon: const Icon(Icons.verified_user),
               label: Text(t.security_device_lock), // Face/Touch/Code des Geräts
